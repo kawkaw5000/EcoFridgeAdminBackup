@@ -1,0 +1,48 @@
+﻿@model AdminSideEcoFridge.Models.User
+
+<form id="editOrgUserForm" method="post" asp-controller="Account" asp-action="EditOrg">
+    <div class="user-details-flex">
+        <div class="profile">
+            <img src="" alt="" class="user-img" id="userImg">
+        </div>
+        <div class="column-user-info">
+            <div class="details-info">Organization</div>
+            <div class="details-info">Street</div>
+            <div class="details-info">Barangay</div>
+            <div class="details-info">City</div>
+            <div class="details-info">Province</div>
+        </div>
+        <div class="column-user-info">
+            <input type="hidden" id="editUserId" asp-for="UserId" />
+            <input type="hidden" id="editUserEmail" asp-for="Email" />
+            <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
+            <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />
+            <input type="hidden" id="editUsername" asp-for="Username" />
+            <input type="hidden" id="editFirstName" asp-for="FirstName">
+            <div class="user-details">
+                <input type="text" id="editOrgName" asp-for="DoneeOrganizationName">
+            </div>
+            <div class="user-details">
+                <input type="text" id="editStreet" asp-for="Street">
+            </div>
+            <div class="user-details">
+                <input type="text" id="editBaranggay" asp-for="Barangay">
+            </div>
+            <div class="user-details">
+                <input type="text" id="editCity" asp-for="City">
+            </div>
+            <div class="user-details">
+                <input type="text" id="editProvince" asp-for="Province">
+            </div>
+            <div class="save-edit-org">
+                @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+                <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
