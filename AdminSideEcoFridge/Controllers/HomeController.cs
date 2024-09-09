@@ -49,28 +49,7 @@ namespace AdminSideEcoFridge.Controllers
             return Json(user);
         }
   
-        #region Admin Create
-        public IActionResult AdminCreate()
-        {
-            return View();
-        }
-
-        public IActionResult RegularCreate()
-        {
-            return View();
-        }
-
-        public IActionResult FoodBusinessCreate()
-        {
-            return View();
-        }
-
-        public IActionResult OrganizationCreate()
-        {
-            return View();
-        }
-
-        #endregion
+        
 
     }
 }

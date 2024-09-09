@@ -5,11 +5,14 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AdminSideEcoFridge.Utils;
+using AdminSideEcoFridge.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminSideEcoFridge.Controllers
 {
+    [Authorize(Policy = "AdminPolicy")]
     public class AccountController : BaseController
-    {
+    { 
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -67,7 +70,7 @@ namespace AdminSideEcoFridge.Controllers
             return RedirectToAction("Login");
         }
 
-        #region EditSection -
+        #region Edit Section -
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -174,5 +177,188 @@ namespace AdminSideEcoFridge.Controllers
         #endregion
 
 
+
+        #region Account Creation -
+        [HttpGet]
+        public IActionResult AdminCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AdminCreate(User user)
+        {
+            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+
+           
+
+            if (existingEmail == null)
+            {
+                user.FirstName = " ";
+                user.LastName = " ";
+                user.Gender = "M";
+                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+                user.Barangay = " ";
+                user.City = " ";
+                user.Street = " ";
+                user.Province = " ";
+                if (_userRepo.Create(user) == ErrorCode.Success)
+                {
+                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "admin");
+                    if (adminRole != null)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.UserId,
+                            RoleId = adminRole.RoleId
+                        };
+                        _userRoleRepo.Create(userRole);
+                    }
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Email is already taken.");
+                return View(user);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult RegularCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegularCreate(User user)
+        {
+            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+
+            if (existingEmail == null)
+            {
+                user.FirstName = " ";
+                user.LastName = " ";
+                user.Gender = "M";
+                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+                if (_userRepo.Create(user) == ErrorCode.Success)
+                {               
+                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donor");
+                    if (adminRole != null)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.UserId,
+                            RoleId = adminRole.RoleId
+                        };
+                        _userRoleRepo.Create(userRole);
+                    }
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Email is already taken.");
+                return View(user);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult FoodBusinessCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FoodBusinessCreate(User user)
+        {
+            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+
+            if (existingEmail == null)
+            {
+                user.FirstName = " ";
+                user.LastName = " ";
+                user.Gender = "M";
+                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+                if (_userRepo.Create(user) == ErrorCode.Success)
+                {
+                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "food business");
+                    if (adminRole != null)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.UserId,
+                            RoleId = adminRole.RoleId
+                        };
+                        _userRoleRepo.Create(userRole);
+                    }
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Email is already taken.");
+                return View(user);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult OrganizationCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult OrganizationCreate(User user)
+        {
+            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+
+            if (existingEmail == null)
+            {
+                user.FirstName = " ";
+                user.LastName = " ";
+                user.Gender = "M";
+                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+                if (_userRepo.Create(user) == ErrorCode.Success)
+                {
+                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donee organization");
+                    if (adminRole != null)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.UserId,
+                            RoleId = adminRole.RoleId
+                        };
+                        _userRoleRepo.Create(userRole);
+                    }
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Email is already taken.");
+                return View(user);
+            }
+        }
+        #endregion
     }
 }

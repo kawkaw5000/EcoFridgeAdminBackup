@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AdminSideEcoFridge.Models.User
+@{
     Layout = "_Layout";
 }
 <link href="~/css/food-business.css" rel="stylesheet" />
@@ -14,7 +15,7 @@
                 </div>
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
-                    <form method="get" asp-action="Dashboard">
+                    <form method="get" asp-controller="Home" asp-action="Dashboard">
                         <button class="user-profile-btn">
                             User Profiles
                         </button>
@@ -32,18 +33,19 @@
             User Profiles
         </div>
         <div class="admin-create"><button>Food Business</button></div>
+        <form asp-action="FoodBusinessCreate">
         <div class="dashboard-home-container">
             <div class="food-dashboard-home-container">
                 <div class="food-business-cont">
                     <div class="margin-gap">
-                        <input type="text" class="username" placeholder="Username">
+                        <input asp-for="Username" type="text" class="username" placeholder="Username">
                     </div>
                     <div class="margin-gap">
-                        <input type="text" class="email" placeholder="Email">
+                        <input asp-for="Email" type="text" class="email" placeholder="Email">
                     </div>
                     <div class="margin-gap">
                         <div class="pass-input">
-                            <input type="password" class="password" id="password" placeholder="Password">
+                            <input asp-for="Password" type="password" class="password" id="password" placeholder="Password">
                             <span class="toggle-password" onclick="togglePasswordVisibility()">
                                 <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
                             </span>
@@ -60,49 +62,45 @@
                 </div>
                 <div class="food-business-cont">
                     <div class="margin-gap">
-                        <input type="text" placeholder="Food Business Name">
+                        <input asp-for="FoodBusinessName" type="text" placeholder="Food Business Name">
                     </div>
                     <div class="margin-gap">
-                        <input type="text" placeholder="Province">
+                        <input asp-for="Province" type="text" placeholder="Province">
                     </div>
                     <div class="margin-gap">
-                        <input type="text" placeholder="City">
+                        <input asp-for="City" type="text" placeholder="City">
                     </div>
                     <div class="margin-gap">
-                        <input type="text" placeholder="Baranggay">
+                        <input asp-for="Barangay" type="text" placeholder="Barangay">
                     </div>
                 </div>
                 <div class="food-business-cont">
                     <div class="margin-gap">
-                        <input type="text" placeholder="Street">
+                        <input asp-for="Street" type="text" placeholder="Street">
                     </div>
-                    <div class="margin-gap">
-                        <div class="food-upload-container">
-                            <form action="">
+                        <div class="margin-gap">
+                            <div class="food-upload-container">
                                 <label for="myFile" class="food-custom-file-upload">
                                     Upload Profile Picture
                                 </label>
-                                <input type="file" id="myFile" name="filename" onchange="displayFileName()">
+                                <input type="file" id="myFile" name="ProfilePicturePath" asp-for="ProfilePicturePath" onchange="displayFileName()">
                                 <span id="file-name">No file chosen</span>
-                            </form>
+                            </div>
+                        </div>
+                        <div class="margin-gap">
+                        <div class="food-upload-container">         
+                            <label for="myPermitFile" class="food-custom-file-upload">
+                                Upload Business Permit
+                            </label>
+                            <input type="file" id="myPermitFile" name="ProofPicturePath" asp-for="ProofPicturePath" onchange="displayPermitFileName()">
+                            <span id="Permitfile-name">No file chosen</span>
                         </div>
                     </div>
-                    <div class="margin-gap">
-                        <div class="food-upload-container">
-                            <form action="">
-                                <label for="myPermitFile" class="food-custom-file-upload">
-                                    Upload Business Permit
-                                </label>
-                                <input type="file" id="myPermitFile" name="filename" onchange="displayPermitFileName()">
-                                <span id="Permitfile-name">No file chosen</span>
-                            </form>
-                        </div>
-                    </div>
-
                 </div>
             </div>
             <input class="confirm" type="submit">
         </div>
+        </form>
     </div>
 </div>
 <script src="~/js/login.js"></script>

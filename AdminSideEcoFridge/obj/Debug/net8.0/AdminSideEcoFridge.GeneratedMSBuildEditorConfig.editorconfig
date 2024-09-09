@@ -54,8 +54,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/AdminCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/FoodBusinessCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb29kQnVzaW5lc3NDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/OrganizationCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxPcmdhbml6YXRpb25DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/RegularCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWd1bGFyQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Account/_LoginPartial.cshtml]
@@ -70,36 +90,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/AdminCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkNyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/FoodBusinessCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb29kQnVzaW5lc3NDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/OrganizationCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPcmdhbml6YXRpb25DcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Home/RegularCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWd1bGFyQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/\!\!\!\!-EcoFridgeAdminSide/EcoFridgeAdmin/AdminSideEcoFridge/Views/Shared/Error.cshtml]

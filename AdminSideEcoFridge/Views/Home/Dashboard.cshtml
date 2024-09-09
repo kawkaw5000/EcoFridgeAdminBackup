@@ -4,7 +4,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 <link href="~/css/user-profiles.css" rel="stylesheet" />
 <link href="~/css/welcome-admin.css" rel="stylesheet" />
@@ -15,9 +14,13 @@
     <div class="flex-container">
         <div class="welcome-container">
             <div class="admin-welcome">
-                <div class="admin-name">
-                    Welcome Back, Mori!
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="admin-name">
+                        Welcome Back, @User.Identity.Name
+                    </div>
+                }
+               
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
                     <form method="get" asp-action="Dashboard">
@@ -436,22 +439,22 @@
     <div class="modal-content">
         <div class="create-acc">Create a account</div>
         <div class="account-content">
-            <form method="get" asp-action="AdminCreate">
+            <form method="get" asp-controller="Account" asp-action="AdminCreate">
                 <button class="admin-btn">
                     Admin
                 </button>
             </form>
-            <form method="get" asp-action="RegularCreate">
+            <form method="get" asp-controller="Account" asp-action="RegularCreate">
                 <button class="admin-btn">
                     Regular
                 </button>
             </form>
-            <form method="get" asp-action="FoodBusinessCreate">
+            <form method="get" asp-controller="Account" asp-action="FoodBusinessCreate">
                 <button class="food-act-btn">
                     Food Business
                 </button>
             </form>
-            <form method="get" asp-action="OrganizationCreate">
+            <form method="get" asp-controller="Account" asp-action="OrganizationCreate">
                 <button>Organization</button>
             </form>
         </div>

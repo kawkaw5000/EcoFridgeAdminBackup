@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AdminSideEcoFridge.Repository;
 using AdminSideEcoFridge.Models;
+using AdminSideEcoFridge.Models.CustomModels;
 
 namespace AdminSideEcoFridge.Controllers
 {
