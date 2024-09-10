@@ -39,6 +39,8 @@ public partial class VwUsersRoleView
 
     public string? ProfilePicturePath { get; set; }
 
+    public string? ProofPicturePath { get; set; }
+
     public string? EmailVerificationCode { get; set; }
 
     public bool? EmailConfirmed { get; set; }

@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\profiles\adminProfiles\" />
+    <Folder Include="wwwroot\images\profiles\foodProfiles\" />
+    <Folder Include="wwwroot\images\profiles\orgProfiles\" />
+    <Folder Include="wwwroot\images\proofs\foodProofs\" />
+    <Folder Include="wwwroot\images\profiles\userProfiles\" />
+    <Folder Include="wwwroot\images\proofs\organizationProofs\" />
     <Folder Include="wwwroot\uploads\profile_pictures\" />
   </ItemGroup>
 

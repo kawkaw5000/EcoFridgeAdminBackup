@@ -183,8 +183,8 @@
   height: 400px;
   width: 500px;
   background-color: rgb(255, 255, 255);
-  margin-top: 10px;
-  margin-right: 11px;
+  margin-top: 2px;
+  margin-right: 0px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.185);
   border-radius: 7px;
   margin-left: 15px;
@@ -200,8 +200,8 @@
 
 .save-edit-org {
     position: absolute;
-    bottom: -250px;
-    left: 125px;
+    bottom: 10px;
+    right: 10px;
 }
 
 .save-edit-btn {
@@ -234,6 +234,7 @@ tr:hover {
   justify-content: start;
   margin-top: 20px;
   margin-left: 20px;
+  position: relative;
 }
 
 .column-user-info {
@@ -722,37 +723,67 @@ tr:hover {
   background-color: white;
 }
 
+.food-org-docs-container {
+    height: 100px;
+    width: 110px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.212);
+    margin-left: 15px;
+    border-radius: 15px;
+    overflow-y: auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.food-org-docs-container img {
+    height: 90px;
+    width: 90px;
+}
+
 .org-docs-container {
-  height: 100px;
-  width: 110px;
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(128, 128, 128, 0.212);
-  margin-left: 15px;
-  border-radius: 15px;
-  overflow-y: auto;
-  background-color: white;
+    height: 100px;
+    width: 110px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.212);
+    margin-left: 15px;
+    border-radius: 15px;
+    overflow-y: auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.org-docs-container img {
+    height: 90px;
+    width: 90px;
 }
 
 .edit-org-user-container {
   height: 400px;
   width: 500px;
   background-color: rgb(255, 255, 255);
-  margin-top: 10px;
-  margin-right: 11px;
+  margin-top: 2px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.185);
   border-radius: 7px;
   margin-left: 15px;
   float: right;
   position: relative;
+
 }
 .edit-food-user-container {
     height: 400px;
     width: 500px;
     background-color: rgb(255, 255, 255);
-    margin-top: 10px;
-    margin-right: 11px;
+    margin-top: 2px;
+    margin-right: 0px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.185);
     border-radius: 7px;
     margin-left: 15px;
@@ -762,18 +793,20 @@ tr:hover {
 
 .action-org-btn {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 12px;
+  left: 11px;
 }
 
 .Orgaction-btn {
-  background-color: #307A59;
-  border:none ;
-  color: white;
-  padding: 7px 13px 7px 13px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: bold;
+    background-color: #307A59;
+    border: none;
+    color: white;
+    width: 120px;
+    height: 30px;
+    padding: 7px 13px 7px 13px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .Orgaction-btn:hover {
@@ -794,7 +827,7 @@ tr:hover {
   display: none;
   position: absolute;
   right: 0px;
-  top: -80px;
+  top: -75px;
   background-color: white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.356);
   border-radius: 7px;
@@ -812,8 +845,13 @@ tr:hover {
   font-weight: bold;
 }
 
+
 .dropdown-menu button:hover {
   background-color: #81f7c0;
+}
+
+.action-org-btn:hover .dropdown-menu {
+    display: block;
 }
 
 .org-modal {
@@ -851,5 +889,7 @@ tr:hover {
     color: #888;
     font-style: italic;
 }
+
+
 
 

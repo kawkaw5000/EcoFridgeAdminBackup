@@ -9,6 +9,7 @@
 <link href="~/css/welcome-admin.css" rel="stylesheet" />
 <link href="~/css/header.css" rel="stylesheet" />
 <link href="~/css/sidebar.css" rel="stylesheet" />
+<link href="~/css/modal-approval.css" rel="stylesheet" />
 <div class="container">
     <div class="dashboard">Dashboard</div>
     <div class="flex-container">
@@ -88,8 +89,7 @@
                         </tr>
                     </thead>
                     <!--USER LIST------------->
-                    <tbody>
-                    
+                    <tbody>                 
                         @foreach (var user in Model.UserList)
                         {                     
                             <tr data-user-id="@user.UserId"
@@ -105,7 +105,9 @@
                                 data-baranggay="@user.Barangay"
                                 data-city="@user.City"
                                 data-province="@user.Province"
-                                data-address="@user.Street, @user.Barangay, @user.City, @user.Province">
+                                data-address="@user.Street, @user.Barangay, @user.City, @user.Province"
+                                data-userimg="@user.ProfilePicturePath"
+                                data-proofimg="@user.ProofPicturePath">
                                 <td>
                                     <button class="approved-btn">Approved</button>
                                 </td>
@@ -195,37 +197,14 @@
             </div>
            
             <!--EDITED REGULAR ACCOUNT TYPE-->
-            <div class="edit-profile-container">
-                <div class="user-column-container">
-
-                    @await Html.PartialAsync("_EditUserPartialView", Model.User.FirstOrDefault())
-
-                    <div class="fridge-storage-container">
-                        <div class="fridge">Fridge Items</div>
-                        <div class="table-fridge">
-                            <table class="fridge-items">
-                                <thead class="item-name">
-                                    <tr class="fridge">
-                                        <th class="item">Quantity</th>
-                                        <th class="item">Serving</th>
-                                        <th class="item">Item</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="fridge-list">
-                                                
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>             
-            </div>
+            @await Html.PartialAsync("_EditUserPartialView", Model.User.FirstOrDefault())
 
             <!--SELECT ORG ACCOUNT TYPE-->
             <div class="select-org-user-container">
                 <div class="user-column-container">
                     <div class="user-details-flex">
                         <div class="profile">
-                            <img src="" alt="" class="user-img" id="userImg">
+                            <img src="" alt="" class="user-img" id="orgUserImg">
                         </div>
                         <div class="column-user-info">
                             <div class="details-info">Organization</div>
@@ -263,65 +242,24 @@
                     <div class="org-flex">
                         <p>Documents</p>
                         <div class="org-docs-container">
-                            <img src="/images/org-img/org-docx-sample.svg" alt="" class="org-docx">
+                            <img src="" alt="" class="org-docx" id="orgProofImg">
                         </div>
                     </div>
                 </div>
             </div>
-            <!--EDITED ORG ACCOUNT TYPE-->
-            <div class="edit-org-user-container">
-                <div class="user-column-container">
 
-                    @await Html.PartialAsync("_EditOrgPartialView", Model.User.FirstOrDefault())
-                
-                    <div class="org-flex">
-                        <p>Fridge Items</p>
-                        <div class="Orgfridge-storage-container">
-                            <div class="table-fridge">
-                                <table class="fridge-items">
-                                    <thead class="item-name">
-                                        <tr class="fridge">
-                                            <th class="item">Quantity</th>
-                                            <th class="item">Serving</th>
-                                            <th class="item">Item</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fridge-list">
-          
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="org-flex">
-                        <p>Documents</p>
-                        <div class="org-docs-container">
-                            <img src="/images/org-img/org-docx-sample.svg" alt="" class="org-docx">
-                        </div>
-                    </div>
-                </div>
-                @*
-                <div class="action-org-btn">
-                <button class="Orgaction-btn">
-                Actions <img src="/images/org-img/up-arrow (1).png" alt="" class="Orgdrop-arrw">
-                </button>
-                <div class="dropdown-menu">
-                <button id="approve-btn">Approve</button>
-                <button id="reject-btn">Reject</button>
-                </div>
-                </div>
-                *@            
-            </div>
+            <!--EDITED ORG ACCOUNT TYPE-->
+            @await Html.PartialAsync("_EditOrgPartialView", Model.User.FirstOrDefault())
 
             <!--SELECT FOOD ACCOUNT TYPE-->
             <div class="select-food-user-container">
                 <div class="user-column-container">
                     <div class="user-details-flex">
                         <div class="profile">
-                            <img src="" alt="" class="user-img" id="userImg">
+                            <img src="" alt="" class="user-img" id="userFoodImg">
                         </div>
                         <div class="column-user-info">
-                            <div class="details-info">Organization</div>
+                            <div class="details-info">Food Business</div>
                             <div class="details-info">Address</div>
                         </div>
                         <div class="column-user-info">
@@ -358,58 +296,16 @@
                     <div class="org-flex">
                         <p>Documents</p>
                         <div class="org-docs-container">
-                            <img src="/images/org-img/org-docx-sample.svg" alt="" class="org-docx">
+                            <img src="" alt="" class="org-docx" id="proofImg">
                         </div>
                     </div>
                 </div>
             </div>
 
             <!--EDIT FOOD ACCOUNT TYPE-->
-            <div class="edit-food-user-container">
-
-                @await Html.PartialAsync("_EditFoodOrgPartialView", Model.User.FirstOrDefault())
-
-                    <div class="org-flex">
-                        <p>Fridge Items</p>
-                        <div class="Orgfridge-storage-container">
-                            <div class="table-fridge">
-                                <table class="fridge-items">
-                                    <thead class="item-name">
-                                        <tr class="fridge">
-                                            <th class="item">Quantity</th>
-                                            <th class="item">Serving</th>
-                                            <th class="item">Item</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fridge-list">
-                                                                              
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="org-flex">
-                        <p>Documents</p>
-                        <div class="org-docs-container">
-                            <img src="/images/org-img/org-docx-sample.svg" alt="" class="org-docx">
-                        </div>
-                    </div>
-                </div>
-                @*
-                <div class="action-org-btn">
-                <button class="Orgaction-btn">
-                Actions <img src="/images/org-img/up-arrow (1).png" alt="" class="Orgdrop-arrw">
-                </button>
-                <div class="dropdown-menu">
-                <button id="approve-btn">Approve</button>
-                <button id="reject-btn">Reject</button>
-                </div>
-                </div>
-                *@     
-            </div>
-
-
-
+            @await Html.PartialAsync("_EditFoodOrgPartialView", Model.User.FirstOrDefault())
+           
+         </div>
             <div id="org-modal" class="org-modal">
                 <div class="org-modal-content">
                     <img src="/images/org-img/codicon_organization.svg" alt="" class="org-style">
@@ -417,10 +313,9 @@
                     <button class="org-close-modal-btn" id="close-modal">Close</button>
                 </div>
             </div>
-        </div>
-
-    </div>
+     </div>
 </div>
+
 <!---MODALlllllldsdsdssd-->
 <div id="deleteModal" class="del-modal">
     <div class="del-modal-content">
@@ -465,12 +360,10 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 @* <script src="~/js/ajaxedit.js"></script> *@
-
+<script src="~/js/modal-approval.js"></script>
 <script src="~/js/selectuser.js"></script>
 <script src="~/js/modal.js"></script>
-<script src="~/js/approvemodal.js"></script>
 <script src="~/js/edituser.js"></script>
 <script src="~/js/editorg.js"></script>
 <script src="~/js/foodlist.js"></script>

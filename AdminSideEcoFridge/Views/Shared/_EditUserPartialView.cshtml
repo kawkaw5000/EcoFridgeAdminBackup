@@ -1,4 +1,6 @@
 ﻿@model AdminSideEcoFridge.Models.User
+<div class="edit-profile-container">
+    <div class="user-column-container">
         <form id="editUserForm" method="post" asp-controller="Account" asp-action="Edit">
             <div class="user-details-flex">
                 <div class="profile">
@@ -57,9 +59,13 @@
                 @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
                 <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
             </div>
-            </div>
-            
-        </form>
+            </div>           
+        </form>       
+    </div>             
+</div>
+
+
+        
 
 @* <script>
     async function saveBtn() {

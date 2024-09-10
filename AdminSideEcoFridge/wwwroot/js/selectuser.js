@@ -60,13 +60,17 @@ function showUserDetails(row) {
 
     } else if (accountType === 'donee organization') {
         document.querySelector('.select-org-user-container').style.display = 'block';
+        document.getElementById('orgUserImg').src = row.dataset.userimg;
         document.getElementById('orgName').value = row.dataset.orgname;
         document.getElementById('orgAddress').value = row.dataset.address;
+        document.getElementById('orgProofImg').src = row.dataset.proofimg;
+
     } else if (accountType === 'food business') {
         document.querySelector('.select-food-user-container').style.display = 'block';
-
+        document.getElementById('userFoodImg').src = row.dataset.userimg;
         document.getElementById('foodName').value = row.dataset.foodbussiness;
         document.getElementById('foodAddress').value = row.dataset.address;
+        document.getElementById('proofImg').src = row.dataset.proofimg;
     }
 }
 

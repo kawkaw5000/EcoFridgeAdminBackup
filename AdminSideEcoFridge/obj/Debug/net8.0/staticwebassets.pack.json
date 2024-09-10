@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\modal-approval.css",
+      "PackagePath": "staticwebassets\\css\\modal-approval.css"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\sidebar.css",
       "PackagePath": "staticwebassets\\css\\sidebar.css"
     },
@@ -41,12 +45,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\ApprovedImg.svg",
+      "PackagePath": "staticwebassets\\images\\Create-icons\\ApprovedImg.svg"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\email.svg",
       "PackagePath": "staticwebassets\\images\\Create-icons\\email.svg"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\output.png",
+      "PackagePath": "staticwebassets\\images\\Create-icons\\output.png"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\profile-upload.svg",
       "PackagePath": "staticwebassets\\images\\Create-icons\\profile-upload.svg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\trashcan.svg",
+      "PackagePath": "staticwebassets\\images\\Create-icons\\trashcan.svg"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\LoginImg\\8666609_user_icon.png",
@@ -117,6 +133,10 @@
       "PackagePath": "staticwebassets\\images\\header-icons\\trash-vec.svg"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\modalImg\\ApprovedImg.svg",
+      "PackagePath": "staticwebassets\\images\\modalImg\\ApprovedImg.svg"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\org-img\\ApprovedImg.svg",
       "PackagePath": "staticwebassets\\images\\org-img\\ApprovedImg.svg"
     },
@@ -135,6 +155,46 @@
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\org-img\\up-arrow (1).png",
       "PackagePath": "staticwebassets\\images\\org-img\\up-arrow (1).png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\default.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\default.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\foodProfiles\\profile_055428ad-dfa2-4c1b-9f15-29ee8eb89a25.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\foodProfiles\\profile_055428ad-dfa2-4c1b-9f15-29ee8eb89a25.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\orgProfiles\\profile_b2f8ea10-c486-4bea-9f08-4ae920939fbf.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\orgProfiles\\profile_b2f8ea10-c486-4bea-9f08-4ae920939fbf.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\profile_758f96b9-1be2-4908-a6c5-793032f9fdf9.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\profile_758f96b9-1be2-4908-a6c5-793032f9fdf9.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\profile_b6ca37c2-5b7f-4827-adde-4d1cd08d37c3.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\profile_b6ca37c2-5b7f-4827-adde-4d1cd08d37c3.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\4971f5b2-c7b0-4de2-83f6-65a4c07e3ef0.JPG",
+      "PackagePath": "staticwebassets\\images\\profiles\\userProfiles\\4971f5b2-c7b0-4de2-83f6-65a4c07e3ef0.JPG"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_e03996bd-f9f6-45da-8d9a-98a1c4d43153.jpg",
+      "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_e03996bd-f9f6-45da-8d9a-98a1c4d43153.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_c90aa97e-5c2f-4538-b9eb-3651c19773f9.jpg",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_c90aa97e-5c2f-4538-b9eb-3651c19773f9.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\proof_010aeabf-edce-407a-8187-72493a9110ce.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\proof_010aeabf-edce-407a-8187-72493a9110ce.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\proof_b2029f2c-9031-48ee-9969-aa9e6b5f632a.jpg",
+      "PackagePath": "staticwebassets\\images\\proofs\\proof_b2029f2c-9031-48ee-9969-aa9e6b5f632a.jpg"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\sidbar-icons\\Eco-logo.svg",
@@ -185,6 +245,10 @@
       "PackagePath": "staticwebassets\\js\\edituser.js"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\food-modal-approval.js",
+      "PackagePath": "staticwebassets\\js\\food-modal-approval.js"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\foodlist.js",
       "PackagePath": "staticwebassets\\js\\foodlist.js"
     },
@@ -195,6 +259,10 @@
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\login.js",
       "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\modal-approval.js",
+      "PackagePath": "staticwebassets\\js\\modal-approval.js"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\modal.js",
