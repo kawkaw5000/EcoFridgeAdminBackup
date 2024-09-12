@@ -11,6 +11,7 @@
     <title>Login</title>
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link href="~/css/login.css" rel="stylesheet" />
+    <link href="~/css/errormodal.css" rel="stylesheet" />
 </head>
 <body>
     <main>
@@ -18,13 +19,22 @@
             <div class="login-img-container">
                 <img src="/images/LoginImg/Humba-Img.svg" alt="" class="humba-img">
             </div>
+            <div id="errorModalLogin" class="modal-login">
+                <div class="modal-content-login">              
+                    <img src="/images/loginImg/warning.svg" alt="Alternate Text" />
+                    <div id="modalBodyLogin" class="text-danger-login"></div>
+                    <div class="close-container">
+                        <span class="close-btn-login">&times;</span>
+                    </div>
+                </div>
+            </div>
             <div class="login-input-container">
                 <div class="welcome-content">
                     Welcome Back
                 </div>
                 <form asp-action="Login">
                     <div class="user-input">
-                        <input type="text" class="username" asp-for="Email" placeholder="Username" required>
+                        <input type="text" class="username" asp-for="Email" placeholder="Email" required>
                     </div>
                     <div class="pass-input">
                         <input type="password" class="password" id="password" asp-for="Password" placeholder="Password" required>
@@ -39,6 +49,33 @@
             </div>
         </div>
     </main>
+    <script>
+        function showErrorModal(message) {
+            document.getElementById('modalBodyLogin').innerText = message;
+            document.getElementById('errorModalLogin').style.display = 'block';
+        }
+
+        function hideErrorModal() {
+            document.getElementById('errorModalLogin').style.display = 'none';
+        }
+
+        document.querySelector('.close-btn-login').onclick = function () {
+            hideErrorModal();
+        }
+
+        window.onclick = function (event) {
+            if (event.target === document.getElementById('errorModalLogin')) {
+                hideErrorModal();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var errorMessage = '@Html.Raw(ViewData["ErrorMessage"])';
+            if (errorMessage) {
+                showErrorModal(errorMessage);
+            }
+        });
+    </script>
     <script src="~/js/login.js"></script>
 </body>
 </html>

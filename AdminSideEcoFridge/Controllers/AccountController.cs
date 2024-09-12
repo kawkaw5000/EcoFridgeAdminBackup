@@ -10,10 +10,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminSideEcoFridge.Controllers
 {
-
     public class AccountController : BaseController
-    { 
-
+    {
+        #region Login Authentication -
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -30,11 +29,13 @@ namespace AdminSideEcoFridge.Controllers
 
             if (userObj == null || userObj.EmailConfirmed == false)
             {
+                ViewData["ErrorMessage"] = "Incorrect Password or User does not exist.";
                 return View();
             }
 
             if (user.Password != userObj.Password)
             {
+                ViewData["ErrorMessage"] = "Incorrect Password or User does not exist.";
                 return View();
             }
 
@@ -44,6 +45,8 @@ namespace AdminSideEcoFridge.Controllers
             {
                 return View();
             }
+
+            ViewData["ErrorMessage"] = null;
 
             List<Claim> claims = new List<Claim>()
             {
@@ -70,6 +73,7 @@ namespace AdminSideEcoFridge.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+        #endregion
 
         #region Edit Section -
         [HttpGet]
@@ -162,6 +166,7 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.Barangay = u.Barangay;
             existingUser.City = u.City;
             existingUser.Province = u.Province;
+            existingUser.DoneeOrganizationName = u.DoneeOrganizationName;
 
             if (!string.IsNullOrEmpty(u.ProfilePicturePath))
             {
@@ -222,6 +227,7 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.Barangay = u.Barangay;
             existingUser.City = u.City;
             existingUser.Province = u.Province;
+            existingUser.FoodBusinessName = u.FoodBusinessName;
 
             if (!string.IsNullOrEmpty(u.ProfilePicturePath))
             {
@@ -247,6 +253,7 @@ namespace AdminSideEcoFridge.Controllers
         #endregion
 
         #region Account Creation -
+        [Authorize(Policy = "AdminPolicy")]
         [HttpGet]
         public IActionResult AdminCreate()
         {
@@ -256,110 +263,127 @@ namespace AdminSideEcoFridge.Controllers
         [HttpPost]
         public IActionResult AdminCreate(User user, IFormFile ProfilePicturePath)
         {
-            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+            const long MaxFileSize = 2 * 1024 * 1024; // 2 MB
+            var allowedImageExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var allowedEmailDomains = new[] { "gmail.com", "yahoo.com", "ymail.com" };
 
-            if (existingEmail == null)
+            //Check if email already exists
+            var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
+            if (existingEmail != null)
             {
-          
-                user.FirstName = " ";
-                user.LastName = " ";
-                user.Gender = "M";
-                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-                user.Barangay = " ";
-                user.City = " ";
-                user.Street = " ";
-                user.Province = " ";
+                ModelState.AddModelError("Email", "Email is already taken.");
+            }
 
-   
-                if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            //Check if username already exists
+            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
+            if (existingUsername != null)
+            {
+                ModelState.AddModelError("Username", "Username is already taken.");
+            }
+
+            //Check if password and confirm password match
+            if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Password and Confirm Password don't match.");
+            }
+
+            //Username validation: must not start with a number
+            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
+            {
+                ModelState.AddModelError("Username", "Please enter a valid username.");
+            }
+
+            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                ModelState.AddModelError("Username", "Username cannot contain special characters.");
+            }
+
+            //Email domain validation
+            var emailDomain = user.Email.Split('@').Last();
+            if (!allowedEmailDomains.Contains(emailDomain))
+            {
+                ModelState.AddModelError("Email", "Please use a valid email.");
+            }
+
+            //Profile picture validation
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(profileExtension))
                 {
-                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePicturePath.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/adminProfiles/", fileName);
+                    ModelState.AddModelError("ProfilePicturePath", "Profile picture must be a .jpg, .jpeg, or .png file.");
+                }
+                if (ProfilePicturePath.Length > MaxFileSize)
+                {
+                    ModelState.AddModelError("ProfilePicturePath", "Profile picture must be less than 2 MB.");
+                }
+            }
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+            //Return to view if validation fails
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            //Set default values for fields
+            user.FirstName = " ";
+            user.LastName = " ";
+            user.Gender = "M";
+            user.Barangay = " ";
+            user.City = " ";
+            user.Street = " ";
+            user.Province = " ";
+            user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+            //Profile picture upload logic
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
+                var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/adminProfiles/", profileFileName);
+
+                try
+                {
+                    using (var stream = new FileStream(profileFilePath, FileMode.Create))
                     {
                         ProfilePicturePath.CopyTo(stream);
                     }
-
-                    user.ProfilePicturePath = "/images/profiles/adminProfiles/" + fileName;
+                    user.ProfilePicturePath = "/images/profiles/adminProfiles/" + profileFileName;
                 }
-                else
+                catch (Exception ex)
                 {
-                    user.ProfilePicturePath = "/images/profiles/default.png";
-                }
-
-         
-                if (_userRepo.Create(user) == ErrorCode.Success)
-                {
-                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "admin");
-                    if (adminRole != null)
-                    {
-                        var userRole = new UserRole
-                        {
-                            UserId = user.UserId,
-                            RoleId = adminRole.RoleId
-                        };
-                        _userRoleRepo.Create(userRole);
-                    }
-                    return RedirectToAction("Dashboard", "Home");
-                }
-                else
-                {
-                    return View();
+                    ModelState.AddModelError("ProfilePicturePath", "Error uploading profile picture: " + ex.Message);
+                    return View(user);
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Email is already taken.");
-                return View(user);
+                user.ProfilePicturePath = "/images/profiles/default.png";
+            }
+
+            //Save user and assign role
+            if (_userRepo.Create(user) == ErrorCode.Success)
+            {
+                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "admin");
+                if (adminRole != null)
+                {
+                    var userRole = new UserRole
+                    {
+                        UserId = user.UserId,
+                        RoleId = adminRole.RoleId
+                    };
+                    _userRoleRepo.Create(userRole);
+                }
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "An error occurred while creating the donor.";
+                return View();
             }
         }
 
-
-        //[HttpPost]
-        //public IActionResult AdminCreate(User user)
-        //{
-        //    var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
-
-
-
-        //    if (existingEmail == null)
-        //    {
-        //        user.FirstName = " ";
-        //        user.LastName = " ";
-        //        user.Gender = "M";
-        //        user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-
-        //        user.Barangay = " ";
-        //        user.City = " ";
-        //        user.Street = " ";
-        //        user.Province = " ";
-        //        if (_userRepo.Create(user) == ErrorCode.Success)
-        //        {
-        //            var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "admin");
-        //            if (adminRole != null)
-        //            {
-        //                var userRole = new UserRole
-        //                {
-        //                    UserId = user.UserId,
-        //                    RoleId = adminRole.RoleId
-        //                };
-        //                _userRoleRepo.Create(userRole);
-        //            }
-        //            return RedirectToAction("Dashboard", "Home");
-        //        }
-        //        else
-        //        {
-        //            return View();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Email is already taken.");
-        //        return View(user);
-        //    }
-        //}
-
+        [Authorize(Policy = "AdminPolicy")]
         [HttpGet]
         public IActionResult RegularCreate()
         {
@@ -369,65 +393,125 @@ namespace AdminSideEcoFridge.Controllers
         [HttpPost]
         public IActionResult RegularCreate(User user, IFormFile ProfilePicturePath)
         {
-            var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
+            const long MaxFileSize = 2 * 1024 * 1024; // 2 MB
+            var allowedImageExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var allowedEmailDomains = new[] { "gmail.com", "yahoo.com", "ymail.com" };
 
-            if (existingEmail == null)
+            //Check if email already exists
+            var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
+            if (existingEmail != null)
             {
-       
-                user.FirstName = " ";
-                user.LastName = " ";
-                user.Gender = "M";
-                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-                user.Barangay = " ";
-                user.City = " ";
-                user.Street = " ";
-                user.Province = " ";
+                ModelState.AddModelError("Email", "Email is already taken.");
+            }
 
-  
-                if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            //Check if username already exists
+            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
+            if (existingUsername != null)
+            {
+                ModelState.AddModelError("Username", "Username is already taken.");
+            }
+
+            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                ModelState.AddModelError("Username", "Username cannot contain special characters.");
+            }
+
+            //Username validation: must not start with a number
+            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
+            {
+                ModelState.AddModelError("Username", "Please enter a valid username.");
+            }
+
+            //Check if password and confirm password match
+            if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Password and Confirm Password don't match.");
+            }
+     
+            //Email domain validation
+            var emailDomain = user.Email.Split('@').Last();
+            if (!allowedEmailDomains.Contains(emailDomain))
+            {
+                ModelState.AddModelError("Email", "Please use a valid email.");
+            }
+
+            //Profile picture validation
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(profileExtension))
                 {
-                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePicturePath.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/userProfiles/", fileName);
+                    ModelState.AddModelError("ProfilePicturePath", "Profile picture must be a .jpg, .jpeg, or .png file.");
+                }
+                if (ProfilePicturePath.Length > MaxFileSize)
+                {
+                    ModelState.AddModelError("ProfilePicturePath", "Profile picture must be less than 2 MB.");
+                }
+            }
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+            //Set blank inputs
+            user.FirstName = " ";
+            user.LastName = " ";
+            user.Gender = "M";
+            user.Barangay = " ";
+            user.City = " ";
+            user.Street = " ";
+            user.Province = " ";
+            user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+            //Upload File Trappings
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
+                var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/userProfiles/", profileFileName);
+
+                try
+                {
+                    using (var stream = new FileStream(profileFilePath, FileMode.Create))
                     {
                         ProfilePicturePath.CopyTo(stream);
                     }
-
-                    user.ProfilePicturePath = "/images/profiles/userProfiles/" + fileName;
+                    user.ProfilePicturePath = "/images/profiles/userProfiles/" + profileFileName;
                 }
-                else
+                catch (Exception ex)
                 {
-                    user.ProfilePicturePath = "/images/profiles/default.png";
-                }
-
-       
-                if (_userRepo.Create(user) == ErrorCode.Success)
-                {
-                    var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donor");
-                    if (adminRole != null)
-                    {
-                        var userRole = new UserRole
-                        {
-                            UserId = user.UserId,
-                            RoleId = adminRole.RoleId
-                        };
-                        _userRoleRepo.Create(userRole);
-                    }
-                    return RedirectToAction("Dashboard", "Home");
-                }
-                else
-                {
-                    return View();
+                    ModelState.AddModelError("ProfilePicturePath", "Error uploading profile picture: " + ex.Message);
+                    return View(user);
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Email is already taken.");
-                return View(user);
+                user.ProfilePicturePath = "/images/profiles/default.png";
+            }
+
+            //Save user and assign role
+            if (_userRepo.Create(user) == ErrorCode.Success)
+            {
+                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donor");
+                if (adminRole != null)
+                {
+                    var userRole = new UserRole
+                    {
+                        UserId = user.UserId,
+                        RoleId = adminRole.RoleId
+                    };
+                    _userRoleRepo.Create(userRole);
+                }
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "An error occurred while creating the donor.";
+                return View();
             }
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpGet]
         public IActionResult FoodBusinessCreate()
         {
@@ -439,119 +523,161 @@ namespace AdminSideEcoFridge.Controllers
         {
             const long MaxFileSize = 2 * 1024 * 1024; // 2 MB
             var allowedImageExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var allowedEmailDomains = new[] { "gmail.com", "yahoo.com", "ymail.com" };
 
+            //Check if email already exists
             var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
-
-            if (existingEmail == null)
+            if (existingEmail != null)
             {
+                ModelState.AddModelError("Email", "Email is already taken.");
+            }
 
-                user.FirstName = " ";
-                user.LastName = " ";
-                user.Gender = "M";
-                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);    
-                
-                if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            //Check if username already exists
+            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
+            if (existingUsername != null)
+            {
+                ModelState.AddModelError("Username", "Username is already taken.");
+            }
+
+            //Username validation: must not contain special characters and must not start with a number
+            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                ModelState.AddModelError("Username", "Username cannot contain special characters.");
+            }
+            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
+            {
+                ModelState.AddModelError("Username", "Please enter a valid username.");
+            }
+
+            //Check if password and confirm password match
+            if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Password and Confirm Password don't match.");
+            }
+
+            //Email domain validation
+            var emailDomain = user.Email.Split('@').Last();
+            if (!allowedEmailDomains.Contains(emailDomain))
+            {
+                ModelState.AddModelError("Email", "Please use a valid email.");
+            }
+
+            //Check if Food Business Name already exists
+            var existFoodBusinessName = _db.Users.FirstOrDefault(model => model.FoodBusinessName == user.FoodBusinessName);
+            if (existFoodBusinessName != null)
+            {
+                ModelState.AddModelError("FoodBusinessName", "Food Business Name already exists.");
+            }
+
+            //Profile picture validation
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(profileExtension))
                 {
-                    var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
-
-                    if (!allowedImageExtensions.Contains(profileExtension))
-                    {
-                        ModelState.AddModelError("", "Profile picture must be a .jpg, .jpeg, or .png file.");
-                        return View(user);
-                    }
-
-                    if (ProfilePicturePath.Length > MaxFileSize)
-                    {
-                        ModelState.AddModelError("", "Profile picture must be less than 2 MB.");
-                        return View(user);
-                    }
-
-                    var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
-                    var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/foodProfiles/", profileFileName);
-
-                    try
-                    {
-                        using (var stream = new FileStream(profileFilePath, FileMode.Create))
-                        {
-                            ProfilePicturePath.CopyTo(stream);
-                        }
-
-                        user.ProfilePicturePath = "/images/profiles/foodProfiles/" + profileFileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Error uploading profile picture: " + ex.Message);
-                        return View(user);
-                    }
+                    ModelState.AddModelError("ProfilePicturePath", "must be a .jpg, .jpeg, or .png file.");
                 }
-                else
+                if (ProfilePicturePath.Length > MaxFileSize)
                 {
-                    user.ProfilePicturePath = "/images/profiles/default.png";
+                    ModelState.AddModelError("ProfilePicturePath", "must be less than 2 MB.");
                 }
+            }
 
-                if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            //Proof picture validation
+            if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            {
+                var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(proofExtension))
                 {
-                    var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
-
-                    if (!allowedImageExtensions.Contains(proofExtension))
-                    {
-                        ModelState.AddModelError("", "Proof picture must be a .jpg, .jpeg, or .png file.");
-                        return View(user);
-                    }
-
-                    if (ProofPicturePath.Length > MaxFileSize)
-                    {
-                        ModelState.AddModelError("", "Proof picture must be less than 2 MB.");
-                        return View(user);
-                    }
-
-                    var proofFileName = "proof_" + Guid.NewGuid() + proofExtension;
-                    var proofFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/proofs/foodProofs/", proofFileName);
-
-                    try
-                    {
-                        using (var stream = new FileStream(proofFilePath, FileMode.Create))
-                        {
-                            ProofPicturePath.CopyTo(stream);
-                        }
-
-                        user.ProofPicturePath = "/images/proofs/foodProofs/" + proofFileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Error uploading proof picture: " + ex.Message);
-                        return View(user);
-                    }
+                    ModelState.AddModelError("ProofPicturePath", "must be a .jpg, .jpeg, or .png file.");
                 }
-                else
+                if (ProofPicturePath.Length > MaxFileSize)
                 {
-                    user.ProofPicturePath = "/images/proofs/default.png";
+                    ModelState.AddModelError("ProofPicturePath", "must be less than 2 MB.");
                 }
+            }
 
-                if (_userRepo.Create(user) == ErrorCode.Success)
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            //Set blank inputs
+            user.FirstName = " ";
+            user.LastName = " ";
+            user.Gender = "M";
+            user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+            //Handle Profile Picture upload
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
+                var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/foodProfiles/", profileFileName);
+
+                try
                 {
-                    var donorRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "food business");
-                    if (donorRole != null)
+                    using (var stream = new FileStream(profileFilePath, FileMode.Create))
                     {
-                        var userRole = new UserRole
-                        {
-                            UserId = user.UserId,
-                            RoleId = donorRole.RoleId
-                        };
-                        _userRoleRepo.Create(userRole);
+                        ProfilePicturePath.CopyTo(stream);
                     }
-
-                    return RedirectToAction("Dashboard", "Home");
+                    user.ProfilePicturePath = "/images/profiles/foodProfiles/" + profileFileName;
                 }
-                else
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Error creating user.");
+                    ModelState.AddModelError("ProfilePicturePath", "Error uploading profile picture: " + ex.Message);
                     return View(user);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Email is already taken.");
+                user.ProfilePicturePath = "/images/profiles/default.png";
+            }
+
+            //Handle Proof Picture upload
+            if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            {
+                var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
+                var proofFileName = "proof_" + Guid.NewGuid() + proofExtension;
+                var proofFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/proofs/foodProofs/", proofFileName);
+
+                try
+                {
+                    using (var stream = new FileStream(proofFilePath, FileMode.Create))
+                    {
+                        ProofPicturePath.CopyTo(stream);
+                    }
+                    user.ProofPicturePath = "/images/proofs/foodProofs/" + proofFileName;
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("ProofPicturePath", "Error uploading proof picture: " + ex.Message);
+                    return View(user);
+                }
+            }
+            else
+            {
+                user.ProofPicturePath = "/images/proofs/default.png";
+            }
+
+            //Save user and assign role
+            if (_userRepo.Create(user) == ErrorCode.Success)
+            {
+                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "food business");
+                if (adminRole != null)
+                {
+                    var userRole = new UserRole
+                    {
+                        UserId = user.UserId,
+                        RoleId = adminRole.RoleId
+                    };
+                    _userRoleRepo.Create(userRole);
+                }
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "An error occurred while creating the food business account.";
                 return View(user);
             }
         }
@@ -592,7 +718,7 @@ namespace AdminSideEcoFridge.Controllers
         //        return View(user);
         //    }
         //}
-
+        [Authorize(Policy = "AdminPolicy")]
         [HttpGet]
         public IActionResult OrganizationCreate()
         {
@@ -604,122 +730,164 @@ namespace AdminSideEcoFridge.Controllers
         {
             const long MaxFileSize = 2 * 1024 * 1024; // 2 MB
             var allowedImageExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var allowedEmailDomains = new[] { "gmail.com", "yahoo.com", "ymail.com" };
 
+            //Check if email already exists
             var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
-
-            if (existingEmail == null)
+            if (existingEmail != null)
             {
+                ModelState.AddModelError("Email", "Email is already taken.");
+            }
 
-                user.FirstName = " ";
-                user.LastName = " ";
-                user.Gender = "M";
-                user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+            //Check if username already exists
+            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
+            if (existingUsername != null)
+            {
+                ModelState.AddModelError("Username", "Username is already taken.");
+            }
 
-                if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            //Username validation: must not contain special characters and must not start with a number
+            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                ModelState.AddModelError("Username", "Username cannot contain special characters.");
+            }
+            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
+            {
+                ModelState.AddModelError("Username", "Please enter a valid username.");
+            }
+
+            //Check if password and confirm password match
+            if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Password and Confirm Password don't match.");
+            }
+
+            //Email domain validation
+            var emailDomain = user.Email.Split('@').Last();
+            if (!allowedEmailDomains.Contains(emailDomain))
+            {
+                ModelState.AddModelError("Email", "Please use a valid email.");
+            }
+
+            //Check if Food Business Name already exists
+            var existDoneeOrganizationName = _db.Users.FirstOrDefault(model => model.DoneeOrganizationName == user.DoneeOrganizationName);
+            if (existDoneeOrganizationName != null)
+            {
+                ModelState.AddModelError("DoneeOrganizationName", "Organization Name already exists.");
+            }
+
+            //Profile picture validation
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(profileExtension))
                 {
-                    var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
-
-                    if (!allowedImageExtensions.Contains(profileExtension))
-                    {
-                        ModelState.AddModelError("", "Profile picture must be a .jpg, .jpeg, or .png file.");
-                        return View(user);
-                    }
-
-                    if (ProfilePicturePath.Length > MaxFileSize)
-                    {
-                        ModelState.AddModelError("", "Profile picture must be less than 2 MB.");
-                        return View(user);
-                    }
-
-                    var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
-                    var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/orgProfiles", profileFileName);
-
-                    try
-                    {
-                        using (var stream = new FileStream(profileFilePath, FileMode.Create))
-                        {
-                            ProfilePicturePath.CopyTo(stream);
-                        }
-
-                        user.ProfilePicturePath = "/images/profiles/orgProfiles/" + profileFileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Error uploading profile picture: " + ex.Message);
-                        return View(user);
-                    }
+                    ModelState.AddModelError("ProfilePicturePath", "must be a .jpg, .jpeg, or .png file.");
                 }
-                else
+                if (ProfilePicturePath.Length > MaxFileSize)
                 {
-                    user.ProfilePicturePath = "/images/profiles/default.png";
+                    ModelState.AddModelError("ProfilePicturePath", "must be less than 2 MB.");
                 }
+            }
 
-                if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            //Proof picture validation
+            if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            {
+                var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
+                if (!allowedImageExtensions.Contains(proofExtension))
                 {
-                    var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
-
-                    if (!allowedImageExtensions.Contains(proofExtension))
-                    {
-                        ModelState.AddModelError("", "Proof picture must be a .jpg, .jpeg, or .png file.");
-                        return View(user);
-                    }
-
-                    if (ProofPicturePath.Length > MaxFileSize)
-                    {
-                        ModelState.AddModelError("", "Proof picture must be less than 2 MB.");
-                        return View(user);
-                    }
-
-                    var proofFileName = "proof_" + Guid.NewGuid() + proofExtension;
-                    var proofFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/proofs/organizationProofs/", proofFileName);
-
-                    try
-                    {
-                        using (var stream = new FileStream(proofFilePath, FileMode.Create))
-                        {
-                            ProofPicturePath.CopyTo(stream);
-                        }
-
-                        user.ProofPicturePath = "/images/proofs/organizationProofs/" + proofFileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Error uploading proof picture: " + ex.Message);
-                        return View(user);
-                    }
+                    ModelState.AddModelError("ProofPicturePath", "must be a .jpg, .jpeg, or .png file.");
                 }
-                else
+                if (ProofPicturePath.Length > MaxFileSize)
                 {
-                    user.ProofPicturePath = "/images/proofs/default.png";
+                    ModelState.AddModelError("ProofPicturePath", "must be less than 2 MB.");
                 }
+            }
 
-                if (_userRepo.Create(user) == ErrorCode.Success)
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            //Set blank inputs
+            user.FirstName = " ";
+            user.LastName = " ";
+            user.Gender = "M";
+            user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+
+            //Handle Profile Picture upload
+            if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
+            {
+                var profileExtension = Path.GetExtension(ProfilePicturePath.FileName).ToLower();
+                var profileFileName = "profile_" + Guid.NewGuid() + profileExtension;
+                var profileFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profiles/orgProfiles/", profileFileName);
+
+                try
                 {
-                    var donorRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donee organization");
-                    if (donorRole != null)
+                    using (var stream = new FileStream(profileFilePath, FileMode.Create))
                     {
-                        var userRole = new UserRole
-                        {
-                            UserId = user.UserId,
-                            RoleId = donorRole.RoleId
-                        };
-                        _userRoleRepo.Create(userRole);
+                        ProfilePicturePath.CopyTo(stream);
                     }
-
-                    return RedirectToAction("Dashboard", "Home");
+                    user.ProfilePicturePath = "/images/profiles/orgProfiles/" + profileFileName;
                 }
-                else
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Error creating user.");
+                    ModelState.AddModelError("ProfilePicturePath", "Error uploading profile picture: " + ex.Message);
                     return View(user);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Email is already taken.");
+                user.ProfilePicturePath = "/images/profiles/default.png";
+            }
+
+            //Handle Proof Picture upload
+            if (ProofPicturePath != null && ProofPicturePath.Length > 0)
+            {
+                var proofExtension = Path.GetExtension(ProofPicturePath.FileName).ToLower();
+                var proofFileName = "proof_" + Guid.NewGuid() + proofExtension;
+                var proofFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/proofs/organizationProofs/", proofFileName);
+
+                try
+                {
+                    using (var stream = new FileStream(proofFilePath, FileMode.Create))
+                    {
+                        ProofPicturePath.CopyTo(stream);
+                    }
+                    user.ProofPicturePath = "/images/proofs/organizationProofs/" + proofFileName;
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("ProofPicturePath", "Error uploading proof picture: " + ex.Message);
+                    return View(user);
+                }
+            }
+            else
+            {
+                user.ProofPicturePath = "/images/proofs/default.png";
+            }
+
+            //Save user and assign role
+            if (_userRepo.Create(user) == ErrorCode.Success)
+            {
+                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donee organization");
+                if (adminRole != null)
+                {
+                    var userRole = new UserRole
+                    {
+                        UserId = user.UserId,
+                        RoleId = adminRole.RoleId
+                    };
+                    _userRoleRepo.Create(userRole);
+                }
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "An error occurred while creating the donee organization account.";
                 return View(user);
             }
         }
-        #endregion
+        #endregion 
     }
 }

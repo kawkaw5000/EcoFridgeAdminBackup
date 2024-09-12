@@ -3,44 +3,12 @@
   "WorkspaceRootPath": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\wwwroot\\js\\selectuser.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\js\\selectuser.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\wwwroot\\js\\modal-approval.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\js\\modal-approval.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\shared\\_editfoodorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_editfoodorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\wwwroot\\js\\food-modal-approval.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\js\\food-modal-approval.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\account\\organizationcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\organizationcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\wwwroot\\css\\errorvalidation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\errorvalidation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +18,53 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml*",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml*",
-              "ViewState": "AgIAAFYBAAAAAAAAAAAAAFsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:04:38.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FoodBusinessCreate.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:04:23.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "modal-approval.js",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\modal-approval.js",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\js\\modal-approval.js",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\modal-approval.js",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\js\\modal-approval.js",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBwAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-10T13:02:51.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "selectuser.js",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\selectuser.js",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\js\\selectuser.js",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\selectuser.js",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\js\\selectuser.js",
-              "ViewState": "AgIAADoAAAAAAAAAAAAcwEMAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-10T13:20:11.104Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RegularCreate.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:49:56.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
               "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
               "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAH0DAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T13:22:37.303Z",
+              "WhenOpened": "2024-09-11T14:15:32.463Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "991046c8-89ad-4fb3-a477-57707b521f7a",
+        "Display": 0,
+        "X": 814,
+        "Y": 143,
+        "Width": 608,
+        "Height": 586,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_EditFoodOrgPartialView.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:14:09.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "food-modal-approval.js",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\food-modal-approval.js",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\js\\food-modal-approval.js",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\js\\food-modal-approval.js",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\js\\food-modal-approval.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-10T14:39:44.323Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdminCreate.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:49:37.189Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "OrganizationCreate.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-10T13:50:07.59Z",
+              "DocumentIndex": 1,
+              "Title": "errorValidation.css",
+              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
+              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
+              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAiwGkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-12T08:42:49.919Z",
               "EditorCaption": ""
             }
           ]

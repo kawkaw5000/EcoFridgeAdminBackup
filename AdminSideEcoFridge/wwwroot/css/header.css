@@ -20,22 +20,23 @@ body {
   margin-right: 20px;
   position: relative;
 }
-.search-pic {
-  margin-top: 3px;
+
+.search-bar h2 {
+    margin-left: 43px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 10px;
+    border-color: gray;
 }
+
 .box {
   height: 20px;
   flex: 1;
 }
-.search-icon {
-  position: absolute;
-  top: 3.8px;
-  right: 4px;
-  background-color: #307A59;
-  padding: 4px 8px 4px 8px;
-  border-radius: 100px;
-  cursor: pointer;
-}
+
+
+
 .search {
   margin-left: 40px;
   background-color: rgb(230, 230, 230);

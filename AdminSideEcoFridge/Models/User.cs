@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminSideEcoFridge.Models;
 
@@ -10,6 +12,9 @@ public partial class User
     public string Username { get; set; } = null!;
 
     public string Password { get; set; } = null!;
+
+    [NotMapped]
+    public string ConfirmPassword { get; set; }
 
     public string Email { get; set; } = null!;
 

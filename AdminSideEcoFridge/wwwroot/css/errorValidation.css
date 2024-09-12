@@ -1,0 +1,127 @@
+﻿.error-invalid-username {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    background-color: white;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.error-invalid-email {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.error-invalid-password {
+    position: absolute;
+    bottom: -28px;
+    left: 45px;
+    z-index: 2;
+    width: 100%;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.error-invalid-img {
+    position: absolute;
+    top: 5px;   
+    right: -160px;
+    width: 300px;
+    color: red;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+
+.error-invalid-img-regular {
+    position: absolute;
+    top: -2px;
+    right: -100px;
+    width: 260px;
+    color: red;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+
+.error-invalid-foodName {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none;
+}
+
+.error-invalid-img-proof {
+    position: absolute;
+    top: -2px;
+    right: -100px;
+    width: 260px;
+    color: red;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Initially hidden with opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition of 0.3s */
+    pointer-events: none; /* Prevent interaction when hidden */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+
+
+
