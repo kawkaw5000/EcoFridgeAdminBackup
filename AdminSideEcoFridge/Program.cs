@@ -5,9 +5,9 @@ using AdminSideEcoFridge.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using EcoFridge;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<EcoFridgeDbContext>(options =>
@@ -22,7 +22,7 @@ builder.Services.AddAuthentication(
         option.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     });
 
-builder.Services.AddTransient<IAuthorizationHandler, RolesInDBAuthorizationHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, RolesInDBAuthorizationHandler>();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -30,7 +30,7 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole("admin"));
 
     options.AddPolicy("IndividualUserPolicy", policy =>
-    policy.RequireRole("individual_user"));
+        policy.RequireRole("individual_user"));
 
     options.AddPolicy("FoodBusinessPolicy", policy =>
         policy.RequireRole("food_business"));
@@ -44,7 +44,6 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -60,7 +59,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.MapControllerRoute(
     name: "default",

@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminSideEcoFridge.Controllers
 {
+    [Authorize(Policy = "AdminPolicy")]
     public class AccountController : BaseController
     {
         #region Login Authentication -
+        [AllowAnonymous]
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -22,9 +24,36 @@ namespace AdminSideEcoFridge.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(CustomUserModelForLogIn user)
         {
+            var superAdminEmail = Environment.GetEnvironmentVariable("SUPERADMIN_EMAIL");
+            var superAdminPassword = Environment.GetEnvironmentVariable("SUPERADMIN_PASSWORD");
+
+
+            if (user.Email == superAdminEmail && user.Password == superAdminPassword)
+            {
+                List<Claim> claims1 = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Email),
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, "SuperAdmin"),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, "SuperAdmin")
+                };
+
+                ClaimsIdentity identity1 = new ClaimsIdentity(claims1, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                AuthenticationProperties properties1 = new AuthenticationProperties()
+                {
+                    AllowRefresh = true,
+                    IsPersistent = true,
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity1), properties1);
+
+                return RedirectToAction("Dashboard", "Home");
+            }
+
             var userObj = _db.Users.Where(model => (model.Email == user.Email || model.Email == user.Email)).FirstOrDefault();
 
             if (userObj == null || userObj.EmailConfirmed == false)
@@ -51,10 +80,11 @@ namespace AdminSideEcoFridge.Controllers
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Email),
+                new Claim(ClaimTypes.GivenName, userObj.FirstName),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, Convert.ToString(userObj.UserId)),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, userRoleVw.RoleName)
-
             };
+
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             AuthenticationProperties properties = new AuthenticationProperties()
@@ -66,8 +96,59 @@ namespace AdminSideEcoFridge.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), properties);
 
             return RedirectToAction("Dashboard", "Home");
-         }
+        }
 
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public async Task<IActionResult> Login(CustomUserModelForLogIn user)
+        //{
+
+        //    var userObj = _db.Users.Where(model => (model.Email == user.Email || model.Email == user.Email)).FirstOrDefault();
+
+        //    if (userObj == null || userObj.EmailConfirmed == false)
+        //    {
+        //        ViewData["ErrorMessage"] = "Incorrect Password or User does not exist.";
+        //        return View();
+        //    }
+
+        //    if (user.Password != userObj.Password)
+        //    {
+        //        ViewData["ErrorMessage"] = "Incorrect Password or User does not exist.";
+        //        return View();
+        //    }
+
+        //    var userRoleVw = _db.VwUsersRoleViews.Where(m => m.UserId == userObj.UserId).FirstOrDefault();
+
+        //    if (userRoleVw == null || String.IsNullOrEmpty(userRoleVw.RoleName))
+        //    {
+        //        return View();
+        //    }
+
+        //    ViewData["ErrorMessage"] = null;
+
+        //    List<Claim> claims = new List<Claim>()
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, user.Email),
+        //        new Claim(ClaimTypes.GivenName, userObj.FirstName),
+        //        new Claim(ClaimsIdentity.DefaultNameClaimType, Convert.ToString(userObj.UserId)),
+        //        new Claim(ClaimsIdentity.DefaultRoleClaimType, userRoleVw.RoleName)
+
+        //    };
+        //    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        //    AuthenticationProperties properties = new AuthenticationProperties()
+        //    {
+        //        AllowRefresh = true,
+        //        IsPersistent = true,
+        //    };
+
+        //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), properties);
+
+        //    return RedirectToAction("Dashboard", "Home");
+        // }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
@@ -454,14 +535,14 @@ namespace AdminSideEcoFridge.Controllers
                 return View(user);
             }
             //Set blank inputs
-            user.FirstName = " ";
-            user.LastName = " ";
-            user.Gender = "M";
-            user.Barangay = " ";
-            user.City = " ";
-            user.Street = " ";
-            user.Province = " ";
-            user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
+            //user.FirstName = " ";
+            //user.LastName = " ";
+            //user.Gender = "M";
+            //user.Barangay = " ";
+            //user.City = " ";
+            //user.Street = " ";
+            //user.Province = " ";
+            //user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
 
             //Upload File Trappings
             if (ProfilePicturePath != null && ProfilePicturePath.Length > 0)
@@ -888,6 +969,18 @@ namespace AdminSideEcoFridge.Controllers
                 return View(user);
             }
         }
-        #endregion 
+        #endregion
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            if (_userRepo.Delete(id) == ErrorCode.Success)
+            {
+                return Ok();
+            }
+            return RedirectToAction("Dashboard", "Home");
+        }
+
     }
 }

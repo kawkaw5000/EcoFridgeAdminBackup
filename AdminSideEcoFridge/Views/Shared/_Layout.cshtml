@@ -28,9 +28,14 @@
             <img src="/images/header-icons/channel-1.jpeg" alt="" class="profile-img" id="profileImg">
 
             <!-- Profile Dropdown -->
+            
             <div class="profile-dropdown" id="profileDropdown">
-                <button class="logout-btn"><img src="/images/header-icons/logout-icon.svg" alt="" class="logout-img">Logout</button>
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <button class="logout-btn"><img src="/images/header-icons/logout-icon.svg" alt="" class="logout-img">Logout</button>
+                    @Html.AntiForgeryToken()
+                </form>
             </div>
+           
         </div>
     </header>
     <nav class="sidebar">

@@ -6,7 +6,9 @@
 <link href="~/css/welcome-admin.css" rel="stylesheet" />
 <link href="~/css/admincreate.css" rel="stylesheet" />
 <link href="~/css/errorvalidation.css" rel="stylesheet" />
+<link href="~/css/check.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div class="container">
     <div class="dashboard">Dashboard</div>
     <div class="flex-container">
@@ -77,21 +79,39 @@
                             </span>
                         </div>
                     </div>
+                  
+
                 </div>
-                <div class="food-business-cont">
+                <div class="food-business-cont">   
                     <div class="margin-gap">
-                        <input asp-for="Province" type="text" placeholder="Province" required>
+                        <input asp-for="FirstName" type="text" placeholder="First Name" required>
                     </div>
                     <div class="margin-gap">
+                        <input asp-for="LastName" type="text" placeholder="Last Name" required>
+                    </div>
+                    <div class="margin-gap">
+                        <input asp-for="Birthdate" type="date" placeholder="Birthdate" required>
+                    </div>
+                    <div class="margin-gap">                 
+                        <select asp-for="Gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>                 
+                </div>
+                <div class="food-business-cont">
+                     <div class="margin-gap">
                         <input asp-for="City" type="text" placeholder="City" required>
                     </div>
                     <div class="margin-gap">
                         <input asp-for="Barangay" type="text" placeholder="Barangay" required>
                     </div>
-                </div>
-                <div class="food-business-cont">
                     <div class="margin-gap">
                         <input asp-for="Street" type="text" placeholder="Street" required>
+                    </div>
+                    <div class="margin-gap">
+                        <input asp-for="Province" type="text" placeholder="Province" required>
                     </div>
                     <div class="margin-gap">
                         <div class="food-upload-container">

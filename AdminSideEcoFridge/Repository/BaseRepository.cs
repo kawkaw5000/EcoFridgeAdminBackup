@@ -43,17 +43,18 @@ namespace AdminSideEcoFridge.Repository
         {
             try
             {
-                var obj = Get(id);
-                _table.Remove(obj);
+                var user = Get(id);
+                _table.Remove(user);
                 _db.SaveChanges();
                 return ErrorCode.Success;
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
                 return ErrorCode.Error;
             }
         }
+
 
         public ErrorCode Update(object id, T t)
         {

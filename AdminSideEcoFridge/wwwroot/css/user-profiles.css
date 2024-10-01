@@ -57,20 +57,23 @@
   scroll-snap-type: y mandatory;
   margin-right: 5px;
   float: left;
+  position: relative;
 }
 
 .user-profile-list-container > .user-list-table{
   width: 100%;
 }
 
+
+
 .action-btn {
-  background-color: #307A59;
-  border:none ;
-  color: white;
-  padding: 7px 13px 7px 13px;
-  border-radius: 15px;
-  font-size: 14px;
-  font-weight: bold;
+    background-color: #307A59;
+    border: none;
+    color: white;
+    padding: 7px 13px 7px 13px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .drop-arrw {
@@ -153,6 +156,72 @@
   flex-direction: row;
   align-items: center;
   justify-content: start;
+  position: relative;
+}
+
+.dashboard-home-container #modal-delacc.hide {
+    display: none;
+}
+
+.dashboard-home-container #modal-delacc.show {
+    display: flex;
+}
+
+.dashboard-home-container #modal-delacc {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    top: -110px;
+    right: 45%;
+    z-index: 1001;
+}
+
+.dashboard-home-container #blur-bg {
+    position: absolute; 
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.dashboard-home-container #del-user {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 250px;
+    background-color: #307A59;
+    border-radius: 15px;
+    z-index: 1002;
+    gap: 10px;
+}
+
+.dashboard-home-container #del-user #ok {
+    width: 190px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+
+}
+
+.dashboard-home-container #del-user #cancel {
+    width: 190px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+}
+
+.dashboard-home-container #del-user #ok:active {
+    background-color: #B8F1B0;
+    box-shadow: 3px 3px 0px ; 
+}
+
+.dashboard-home-container #del-user #cancel:active {
+    background-color: #B8F1B0;
+    box-shadow: 3px 3px 0px ; 
 }
 
 .selected-profile-container {
@@ -889,6 +958,8 @@ tr:hover {
     color: #888;
     font-style: italic;
 }
+
+
 
 
 

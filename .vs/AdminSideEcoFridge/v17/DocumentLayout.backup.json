@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\wwwroot\\css\\errorvalidation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\errorvalidation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,48 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAH0DAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T14:15:32.463Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "991046c8-89ad-4fb3-a477-57707b521f7a",
-        "Display": 0,
-        "X": 814,
-        "Y": 143,
-        "Width": 608,
-        "Height": 586,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "errorValidation.css",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\errorValidation.css",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAiwGkAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-12T08:42:49.919Z",
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-01T16:02:52.621Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]

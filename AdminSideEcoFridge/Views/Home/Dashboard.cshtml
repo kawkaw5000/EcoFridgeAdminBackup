@@ -1,4 +1,5 @@
-﻿@model AdminSideEcoFridge.Models.DashboardViewModel
+﻿@using System.Security.Claims
+@model AdminSideEcoFridge.Models.DashboardViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -17,10 +18,18 @@
             <div class="admin-welcome">
                 @if (User.Identity.IsAuthenticated)
                 {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+     
+                    if (User.IsInRole("SuperAdmin"))
+                    {
+                        userName = "SuperAdmin";
+                    }
+
                     <div class="admin-name">
-                        Welcome Back, @User.Identity.Name
+                        Welcome Back, @userName
                     </div>
                 }
+
                
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
@@ -89,7 +98,8 @@
                         </tr>
                     </thead>
                     <!--USER LIST------------->
-                    <tbody>                 
+                    <tbody>     
+                        @{int i = 1;}
                         @foreach (var user in Model.UserList)
                         {                     
                             <tr data-user-id="@user.UserId"
@@ -111,7 +121,7 @@
                                 <td>
                                     <button class="approved-btn">Approved</button>
                                 </td>
-                                <td>@user.UserId</td>
+                                <td>@i</td>
                                 <td>@user.RoleName</td>
                                 <td>@user.Username</td>
                                 <td>@user.Email</td>
@@ -122,16 +132,18 @@
                                         </button>
                                         <div class="dropdown-content">
                                             <a class="dropdown-item" data-users-id="@user.UserId" href="#">Edit</a>
-                                            <button class="dropdown-item" >Delete</button>
+                                            <a class="dropdown-item delete-user-btn" data-del-users-id="@user.UserId" href="#">Delete</a>
+
                                         </div>
                                     </div>
                                 </td>
-                            </tr>                                               
+                            </tr>
+                            i++;
                         }
                     </tbody>
-                </table>
+                </table>               
             </div>
-
+               
             <!--BLANK CONTAINER-->
             <div class="blank-profile-container">
             </div>
@@ -304,7 +316,20 @@
 
             <!--EDIT FOOD ACCOUNT TYPE-->
             @await Html.PartialAsync("_EditFoodOrgPartialView", Model.User.FirstOrDefault())
-           
+
+            <div id="modal-delacc" class="hide">
+                <div id="del-user">
+                    <img src="~/images/header-icons/trash-vec.svg" alt="Alternate Text" />
+                    <h4 style="color: white; text-align: center; padding-left: 13px; padding-right: 13px;">Selected Account will be deleted PERMANENTLY</h4>
+                    <button id="ok">OK</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+                <div id="blur-bg"></div>
+            </div>
+
+            <!-- Anti-forgery token -->
+            @Html.AntiForgeryToken()
+            
          </div>
             <div id="org-modal" class="org-modal">
                 <div class="org-modal-content">
@@ -360,6 +385,71 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<script>
+    // Listen for the delete button click to open the modal
+    document.querySelectorAll('.delete-user-btn').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const userId = this.getAttribute('data-del-users-id');
+            const delAccModal = document.getElementById('modal-delacc');
+
+            // Store user ID in the modal for later use
+            delAccModal.setAttribute('data-user-id', userId);
+
+            // Show the modal
+            delAccModal.classList.remove('hide');
+            delAccModal.classList.add('show');
+        });
+    });
+
+    // Confirm deletion
+    document.getElementById('ok').addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        // Get the user ID from the modal
+        const delAccModal = document.getElementById('modal-delacc');
+        const userId = delAccModal.getAttribute('data-user-id');
+
+        // Get the anti-forgery token
+        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+        // Send AJAX request to delete user
+        fetch(`/Account/Delete/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'RequestVerificationToken': token
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Successfully deleted, remove the row from the table
+                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                    if (row) row.remove();
+
+                    // Hide the modal
+                    delAccModal.classList.remove('show');
+                    delAccModal.classList.add('hide');
+                } else {
+                    console.error("Failed to delete the user.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    // Cancel deletion
+    document.getElementById('cancel').addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        // Hide the modal
+        const delAccModal = document.getElementById('modal-delacc');
+        delAccModal.classList.remove('show');
+        delAccModal.classList.add('hide');
+    });
+
+
+</script>
 @* <script src="~/js/ajaxedit.js"></script> *@
 <script src="~/js/modal-approval.js"></script>
 <script src="~/js/selectuser.js"></script>
