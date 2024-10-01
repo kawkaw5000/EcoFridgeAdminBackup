@@ -321,12 +321,12 @@
                 <div id="del-user">
                     <img src="~/images/header-icons/trash-vec.svg" alt="Alternate Text" />
                     <h4 style="color: white; text-align: center; padding-left: 13px; padding-right: 13px;">Selected Account will be deleted PERMANENTLY</h4>
-                    <button id="ok">OK</button>
+                    <button id="ok" data-toggle="modal" data-target="#success_tic">OK</button>
                     <button id="cancel">Cancel</button>
                 </div>
                 <div id="blur-bg"></div>
             </div>
-
+          
             <!-- Anti-forgery token -->
             @Html.AntiForgeryToken()
             
@@ -385,72 +385,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-    // Listen for the delete button click to open the modal
-    document.querySelectorAll('.delete-user-btn').forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            const userId = this.getAttribute('data-del-users-id');
-            const delAccModal = document.getElementById('modal-delacc');
-
-            // Store user ID in the modal for later use
-            delAccModal.setAttribute('data-user-id', userId);
-
-            // Show the modal
-            delAccModal.classList.remove('hide');
-            delAccModal.classList.add('show');
-        });
-    });
-
-    // Confirm deletion
-    document.getElementById('ok').addEventListener('click', function (event) {
-        event.stopPropagation();
-
-        // Get the user ID from the modal
-        const delAccModal = document.getElementById('modal-delacc');
-        const userId = delAccModal.getAttribute('data-user-id');
-
-        // Get the anti-forgery token
-        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-
-        // Send AJAX request to delete user
-        fetch(`/Account/Delete/${userId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'RequestVerificationToken': token
-            }
-        })
-            .then(response => {
-                if (response.ok) {
-                    // Successfully deleted, remove the row from the table
-                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
-                    if (row) row.remove();
-
-                    // Hide the modal
-                    delAccModal.classList.remove('show');
-                    delAccModal.classList.add('hide');
-                } else {
-                    console.error("Failed to delete the user.");
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
-
-    // Cancel deletion
-    document.getElementById('cancel').addEventListener('click', function (event) {
-        event.stopPropagation();
-
-        // Hide the modal
-        const delAccModal = document.getElementById('modal-delacc');
-        delAccModal.classList.remove('show');
-        delAccModal.classList.add('hide');
-    });
-
-
-</script>
-@* <script src="~/js/ajaxedit.js"></script> *@
+<script src="~/js/del-acc.js"></script>
 <script src="~/js/modal-approval.js"></script>
 <script src="~/js/selectuser.js"></script>
 <script src="~/js/modal.js"></script>
