@@ -197,12 +197,56 @@
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\f7a6c7cd-e90d-473e-bdca-c0f9c4c90e1d.png"
     },
     {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_25f3932a-d060-4b42-9502-9976c6186e76.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_25f3932a-d060-4b42-9502-9976c6186e76.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_2711304b-86ca-4ccd-bf30-f4c5e0245c6b.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_2711304b-86ca-4ccd-bf30-f4c5e0245c6b.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_49aea1ff-83a6-41f1-9c15-15772fbc9580.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_49aea1ff-83a6-41f1-9c15-15772fbc9580.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_5cd44788-81a1-481b-be20-2fca28191586.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_5cd44788-81a1-481b-be20-2fca28191586.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_6c7f0b15-0fbb-4267-82f5-7a9818637ead.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_6c7f0b15-0fbb-4267-82f5-7a9818637ead.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_6f2c842a-5810-4b74-9cc4-4e1638f1ef4c.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_6f2c842a-5810-4b74-9cc4-4e1638f1ef4c.jpg"
+    },
+    {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_7808d635-b9f2-4986-84e3-73d36cc78be1.png",
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_7808d635-b9f2-4986-84e3-73d36cc78be1.png"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_8085667e-bb17-49f1-b64a-d530d7acf8c9.jpg",
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_8085667e-bb17-49f1-b64a-d530d7acf8c9.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_9978256e-fa06-4231-93d4-01653f834158.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_9978256e-fa06-4231-93d4-01653f834158.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_c5039b7d-80d2-4e5d-9cfb-54fce08126d6.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_c5039b7d-80d2-4e5d-9cfb-54fce08126d6.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_d5b8d2fc-1e0a-44df-b7cb-fd8b100ded72.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_d5b8d2fc-1e0a-44df-b7cb-fd8b100ded72.png"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_e86cd81e-d59f-45c4-9307-e2cb1e4267cc.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_e86cd81e-d59f-45c4-9307-e2cb1e4267cc.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_f0ca583b-0c5e-4bef-a391-97cde3cd7208.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_f0ca583b-0c5e-4bef-a391-97cde3cd7208.jpg"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\default.png",
@@ -291,6 +335,10 @@
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_2e07fd35-f9e9-4ff9-a4c7-c01cfa64aabe.jpg",
       "PackagePath": "staticwebassets\\images\\profiles\\userProfiles\\profile_2e07fd35-f9e9-4ff9-a4c7-c01cfa64aabe.jpg"
+    },
+    {
+      "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_476407c5-d842-45de-ab99-3fae920eed73.png",
+      "PackagePath": "staticwebassets\\images\\profiles\\userProfiles\\profile_476407c5-d842-45de-ab99-3fae920eed73.png"
     },
     {
       "Id": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_54604a8b-43ce-47bd-8095-0c0d36ecadcb.jpg",

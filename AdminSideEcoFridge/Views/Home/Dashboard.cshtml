@@ -321,10 +321,23 @@
                 <div id="del-user">
                     <img src="~/images/header-icons/trash-vec.svg" alt="Alternate Text" />
                     <h4 style="color: white; text-align: center; padding-left: 13px; padding-right: 13px;">Selected Account will be deleted PERMANENTLY</h4>
-                    <button id="ok" data-toggle="modal" data-target="#success_tic">OK</button>
+                    <button id="ok" style="font-weight: bold">DELETE</button>
                     <button id="cancel">Cancel</button>
                 </div>
                 <div id="blur-bg"></div>
+            </div>
+
+            <div id="success-modal" class="hides">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>                 
+                </div>
+                <h4 style="text-align: center;">Account Successfuly deleted!</h4>
+                <button id="done-btn">Done</button>
             </div>
           
             <!-- Anti-forgery token -->
@@ -384,7 +397,42 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById('ok').addEventListener('click', function (event) {
+        event.stopPropagation();
 
+        let successModal = document.getElementById('success-modal');
+
+        if (successModal.classList.contains('hides')) {
+            successModal.classList.remove('hides');
+            successModal.classList.add('shows');
+        } else {
+            successModal.classList.remove('shows');
+            successModal.classList.add('hides');
+        }
+    });
+
+    document.getElementById('done-btn').addEventListener('click', function (event) {
+        event.stopPropagation
+       
+        let successModal = document.getElementById('success-modal');
+
+        if (successModal.classList.contains('shows')) {
+            successModal.classList.remove('shows');
+            successModal.classList.add('hides');
+        } else {
+            successModal.classList.remove('hides');
+            successModal.classList.add('shows');
+        }
+
+        let blankContainer = document.querySelector(".blank-profile-container ");
+        let selectedProfile = document.querySelector(".selected-profile-container");
+
+        blankContainer.style.display = "block";
+        selectedProfile.style.display = "none";
+       
+    });
+</script>
 <script src="~/js/del-acc.js"></script>
 <script src="~/js/modal-approval.js"></script>
 <script src="~/js/selectuser.js"></script>
