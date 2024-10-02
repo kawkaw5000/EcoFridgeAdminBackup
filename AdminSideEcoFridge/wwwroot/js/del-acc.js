@@ -20,7 +20,7 @@ document.getElementById('ok').addEventListener('click', function (event) {
     const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
     fetch(`/Account/Delete/${userId}`, {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',

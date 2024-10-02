@@ -82,7 +82,6 @@
                             </th>                       
                             <th>ID</th>
                             <th>Account-type</th>
-                            <th>Username</th>
                             <th>Email</th>
                             <th>Actions</th>
                         </tr>
@@ -109,11 +108,21 @@
                                 data-userimg="@user.ProfilePicturePath"
                                 data-proofimg="@user.ProofPicturePath">
                                 <td>
-                                    <button class="approved-btn">Approved</button>
+                                    @if (@user.AccountApproved == null)
+                                    {
+                                        <button class="pending-btn">Pending</button>
+                                    }
+                                    else if (@user.AccountApproved == false)
+                                    {
+                                        <button class="reject-btn">Rejected</button>
+                                    }
+                                    else if (@user.AccountApproved == true)
+                                    {
+                                        <button class="approved-btn">Approved</button>
+                                    }
                                 </td>
                                 <td>@i</td>
-                                <td>@user.RoleName</td>
-                                <td>ToBeEditted</td>
+                                <td>@user.RoleName</td>     
                                 <td>@user.Email</td>
                                 <td>
                                     <div class="dropdown">
@@ -345,19 +354,6 @@
 </div>
 
 <!---MODALlllllldsdsdssd-->
-<div id="deleteModal" class="del-modal">
-    <div class="del-modal-content">
-        <div class="modal-col">
-            <div class="modal-header">
-                <img src="/images/header-icons/trash-vec.svg" alt="" class="trash-vec">
-            </div>
-            <div class="top-mar">The selected user</div>
-            <div class="bottom-mar">will be deleted</div>
-            <button id="confirmDeleteBtn" class="delete-confirm-btn">Confirm</button>
-            <button id="cancelDeleteBtn" class="cancel-modal">Cancel</button>
-        </div>
-    </div>
-</div>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="create-acc">Create a account</div>
