@@ -188,7 +188,6 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.LastName = u.LastName;
             existingUser.Gender = u.Gender;
             existingUser.Birthdate = u.Birthdate;
-            existingUser.Street = u.Street;
             existingUser.Barangay = u.Barangay;
             existingUser.City = u.City;
             existingUser.Province = u.Province;
@@ -202,7 +201,7 @@ namespace AdminSideEcoFridge.Controllers
 
             if (result == ErrorCode.Success)
             {
-                TempData["Msg"] = $"User {u.Username} Updated";
+                TempData["Msg"] = $"User {u.Email} Updated";
                 return RedirectToAction("Dashboard", "Home");
             }
 
@@ -243,7 +242,6 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.LastName = u.LastName;
             existingUser.Gender = u.Gender;
             existingUser.Birthdate = u.Birthdate;
-            existingUser.Street = u.Street;
             existingUser.Barangay = u.Barangay;
             existingUser.City = u.City;
             existingUser.Province = u.Province;
@@ -263,7 +261,7 @@ namespace AdminSideEcoFridge.Controllers
 
             if (result == ErrorCode.Success)
             {
-                TempData["Msg"] = $"User {u.Username} Updated";
+                TempData["Msg"] = $"User {u.Email} Updated";
                 return RedirectToAction("Dashboard", "Home");
             }
 
@@ -304,7 +302,6 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.LastName = u.LastName;
             existingUser.Gender = u.Gender;
             existingUser.Birthdate = u.Birthdate;
-            existingUser.Street = u.Street;
             existingUser.Barangay = u.Barangay;
             existingUser.City = u.City;
             existingUser.Province = u.Province;
@@ -324,7 +321,7 @@ namespace AdminSideEcoFridge.Controllers
 
             if (result == ErrorCode.Success)
             {
-                TempData["Msg"] = $"User {u.Username} Updated";
+                TempData["Msg"] = $"User {u.Email} Updated";
                 return RedirectToAction("Dashboard", "Home");
             }
 
@@ -355,28 +352,10 @@ namespace AdminSideEcoFridge.Controllers
                 ModelState.AddModelError("Email", "Email is already taken.");
             }
 
-            //Check if username already exists
-            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
-            if (existingUsername != null)
-            {
-                ModelState.AddModelError("Username", "Username is already taken.");
-            }
-
             //Check if password and confirm password match
             if (user.Password != user.ConfirmPassword)
             {
                 ModelState.AddModelError("ConfirmPassword", "Password and Confirm Password don't match.");
-            }
-
-            //Username validation: must not start with a number
-            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
-            {
-                ModelState.AddModelError("Username", "Please enter a valid username.");
-            }
-
-            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                ModelState.AddModelError("Username", "Username cannot contain special characters.");
             }
 
             //Email domain validation
@@ -412,7 +391,6 @@ namespace AdminSideEcoFridge.Controllers
             user.Gender = "M";
             user.Barangay = " ";
             user.City = " ";
-            user.Street = " ";
             user.Province = " ";
             user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
 
@@ -459,7 +437,7 @@ namespace AdminSideEcoFridge.Controllers
             }
             else
             {
-                ViewData["ErrorMessage"] = "An error occurred while creating the donor.";
+                ViewData["ErrorMessage"] = "An error occurred while creating the admin.";
                 return View();
             }
         }
@@ -483,24 +461,6 @@ namespace AdminSideEcoFridge.Controllers
             if (existingEmail != null)
             {
                 ModelState.AddModelError("Email", "Email is already taken.");
-            }
-
-            //Check if username already exists
-            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
-            if (existingUsername != null)
-            {
-                ModelState.AddModelError("Username", "Username is already taken.");
-            }
-
-            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                ModelState.AddModelError("Username", "Username cannot contain special characters.");
-            }
-
-            //Username validation: must not start with a number
-            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
-            {
-                ModelState.AddModelError("Username", "Please enter a valid username.");
             }
 
             //Check if password and confirm password match
@@ -573,7 +533,7 @@ namespace AdminSideEcoFridge.Controllers
             //Save user and assign role
             if (_userRepo.Create(user) == ErrorCode.Success)
             {
-                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "donor");
+                var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "personal");
                 if (adminRole != null)
                 {
                     var userRole = new UserRole
@@ -587,7 +547,7 @@ namespace AdminSideEcoFridge.Controllers
             }
             else
             {
-                ViewData["ErrorMessage"] = "An error occurred while creating the donor.";
+                ViewData["ErrorMessage"] = "An error occurred while creating the personal.";
                 return View();
             }
         }
@@ -611,23 +571,6 @@ namespace AdminSideEcoFridge.Controllers
             if (existingEmail != null)
             {
                 ModelState.AddModelError("Email", "Email is already taken.");
-            }
-
-            //Check if username already exists
-            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
-            if (existingUsername != null)
-            {
-                ModelState.AddModelError("Username", "Username is already taken.");
-            }
-
-            //Username validation: must not contain special characters and must not start with a number
-            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                ModelState.AddModelError("Username", "Username cannot contain special characters.");
-            }
-            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
-            {
-                ModelState.AddModelError("Username", "Please enter a valid username.");
             }
 
             //Check if password and confirm password match
@@ -818,23 +761,6 @@ namespace AdminSideEcoFridge.Controllers
             if (existingEmail != null)
             {
                 ModelState.AddModelError("Email", "Email is already taken.");
-            }
-
-            //Check if username already exists
-            var existingUsername = _db.Users.FirstOrDefault(model => model.Username == user.Username);
-            if (existingUsername != null)
-            {
-                ModelState.AddModelError("Username", "Username is already taken.");
-            }
-
-            //Username validation: must not contain special characters and must not start with a number
-            if (user.Username.Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                ModelState.AddModelError("Username", "Username cannot contain special characters.");
-            }
-            if (char.IsDigit(user.Username[0]) || user.Username.Length < 3)
-            {
-                ModelState.AddModelError("Username", "Please enter a valid username.");
             }
 
             //Check if password and confirm password match

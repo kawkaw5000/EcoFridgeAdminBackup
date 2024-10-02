@@ -48,7 +48,7 @@ function showUserDetails(row) {
 
     const accountType = row.dataset.accounttype;
 
-    if (accountType === 'donor' || accountType === 'admin') {
+    if (accountType === 'personal' || accountType === 'admin') {
         document.querySelector('.selected-profile-container').style.display = 'block';
 
         document.getElementById('firstName').value = row.dataset.firstname;
@@ -79,14 +79,14 @@ function showEditUserDetails(row) {
 
     const accountType = row.dataset.accounttype;
 
-    if (accountType === 'donor' || accountType === 'admin') {
+    if (accountType === 'personal' || accountType === 'admin') {
         document.querySelector('.edit-profile-container').style.display = 'block';
 
         document.getElementById('editFirstName').value = row.dataset.firstname;
         document.getElementById('editLastName').value = row.dataset.lastname;
         document.getElementById('editGender').value = row.dataset.gender;
         document.getElementById('editBirthDate').value = row.dataset.birthdate;
-        document.getElementById('editStreet').value = row.dataset.street;
+
         document.getElementById('editBaranggay').value = row.dataset.baranggay;
         document.getElementById('editCity').value = row.dataset.city;
         document.getElementById('editProvince').value = row.dataset.province;
@@ -95,7 +95,7 @@ function showEditUserDetails(row) {
         document.querySelector('.edit-org-user-container').style.display = 'block';
 
         document.getElementById('editOrgName').value = row.dataset.orgname;
-        document.getElementById('editStreet').value = row.dataset.street;
+
         document.getElementById('editBaranggay').value = row.dataset.baranggay;
         document.getElementById('editCity').value = row.dataset.city;
         document.getElementById('editProvince').value = row.dataset.province;
@@ -104,7 +104,7 @@ function showEditUserDetails(row) {
         document.querySelector('.edit-food-user-container').style.display = 'block';
 
         document.getElementById('editFoodName').value = row.dataset.foodbussiness;
-        document.getElementById('editStreet').value = row.dataset.street;
+
         document.getElementById('editBaranggay').value = row.dataset.baranggay;
         document.getElementById('editCity').value = row.dataset.city;
         document.getElementById('editProvince').value = row.dataset.province;

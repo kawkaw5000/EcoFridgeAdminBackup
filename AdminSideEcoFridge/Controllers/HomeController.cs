@@ -41,7 +41,7 @@ namespace AdminSideEcoFridge.Controllers
                 User = user,
                 TotalUsers = userList.Count(),
                 AdminCount = roleCounts.ContainsKey("admin") ? roleCounts["admin"] : 0,
-                DonorCount = roleCounts.ContainsKey("donor") ? roleCounts["donor"] : 0,
+                DonorCount = roleCounts.ContainsKey("personal") ? roleCounts["personal"] : 0,
                 FoodBusinessCount = roleCounts.ContainsKey("food business") ? roleCounts["food business"] : 0,
                 OrganizationCount = roleCounts.ContainsKey("donee organization") ? roleCounts["donee organization"] : 0
             };

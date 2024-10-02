@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AdminSideEcoFridge.Models;
 
-public partial class Food
+public partial class VwFoodBeforeExpirationDay
 {
     public int FoodId { get; set; }
 
@@ -21,9 +21,11 @@ public partial class Food
 
     public string? FoodPicturePath { get; set; }
 
-    public virtual ICollection<FoodIngredient> FoodIngredients { get; set; } = new List<FoodIngredient>();
+    public int UserFoodId { get; set; }
 
-    public virtual ICollection<Notifcation> Notifcations { get; set; } = new List<Notifcation>();
+    public string FoodCategoryName { get; set; } = null!;
 
-    public virtual ICollection<UserFood> UserFoods { get; set; } = new List<UserFood>();
+    public int UserId { get; set; }
+
+    public int? DaysToExpire { get; set; }
 }

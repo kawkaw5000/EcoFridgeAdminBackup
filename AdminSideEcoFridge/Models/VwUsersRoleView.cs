@@ -5,12 +5,6 @@ namespace AdminSideEcoFridge.Models;
 
 public partial class VwUsersRoleView
 {
-    public int UserRoleId { get; set; }
-
-    public string Username { get; set; } = null!;
-
-    public string RoleName { get; set; } = null!;
-
     public int UserId { get; set; }
 
     public string Email { get; set; } = null!;
@@ -35,17 +29,21 @@ public partial class VwUsersRoleView
 
     public string? Barangay { get; set; }
 
-    public string? Street { get; set; }
-
     public string? ProfilePicturePath { get; set; }
 
     public string? ProofPicturePath { get; set; }
 
-    public string? EmailVerificationCode { get; set; }
+    public bool? AccountApproved { get; set; }
 
     public bool? EmailConfirmed { get; set; }
 
     public int? StorageSize { get; set; }
 
+    public int? FoodStoredCount { get; set; }
+
     public int RoleId { get; set; }
+
+    public string RoleName { get; set; } = null!;
+
+    public int UserRoleId { get; set; }
 }

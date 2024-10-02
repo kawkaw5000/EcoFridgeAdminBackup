@@ -11,8 +11,6 @@ public partial class UserFood
 
     public int? FoodId { get; set; }
 
-    public int? FoodStoredCount { get; set; }
-
     public virtual ICollection<DonationTransaction> DonationTransactions { get; set; } = new List<DonationTransaction>();
 
     public virtual Food? Food { get; set; }

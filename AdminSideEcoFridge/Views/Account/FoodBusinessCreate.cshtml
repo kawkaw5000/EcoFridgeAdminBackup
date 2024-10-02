@@ -39,14 +39,7 @@
         <div class="dashboard-home-container">
             <div class="food-dashboard-home-container">
                 <div class="food-business-cont">
-                    <div class="margin-gap">
-                        <div style="position: relative;">
-                            <input asp-for="Username" type="text" class="username" placeholder="Username" required>
-                            <div class="error-invalid-username">
-                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
+                
                     <div class="margin-gap">
                         <div style="position: relative;">
                             <input asp-for="Email" type="text" class="email" placeholder="Email" required>
@@ -99,9 +92,7 @@
                     </div>
                 </div>
                 <div class="food-business-cont">
-                    <div class="margin-gap">
-                        <input asp-for="Street" type="text" placeholder="Street" required>
-                    </div>
+      
                         <div class="margin-gap">
                             <div class="food-upload-container">
                                 <div style="position: relative;">
@@ -140,7 +131,7 @@
 <script>
     $(document).ready(function () {
         const errorMappings = [
-            { input: ".username", error: ".error-invalid-username" },
+
             { input: ".email", error: ".error-invalid-email" },
             { input: ".password", error: ".error-invalid-password" },
             { input: "#myFile", error: ".error-invalid-img-regular" },

@@ -55,7 +55,7 @@
                 <button class="count-btn" onclick="filterByRole('all')">All (@Model.TotalUsers)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn" onclick="filterByRole('donor')">Donor (@Model.DonorCount)</button>
+                <button class="count-btn" onclick="filterByRole('personal')">Donor (@Model.DonorCount)</button>
             </div>
             <div class="count-num">
                 <button class="count-btn" onclick="filterByRole('food business')">Food Business (@Model.FoodBusinessCount)</button>
@@ -101,11 +101,11 @@
                                 data-image="@user.ProfilePicturePath"
                                 data-foodbussiness="@user.FoodBusinessName"
                                 data-orgname="@user.DoneeOrganizationName"
-                                data-street="@user.Street"
+ 
                                 data-baranggay="@user.Barangay"
                                 data-city="@user.City"
                                 data-province="@user.Province"
-                                data-address="@user.Street, @user.Barangay, @user.City, @user.Province"
+                                data-address="@user.Barangay, @user.City, @user.Province"
                                 data-userimg="@user.ProfilePicturePath"
                                 data-proofimg="@user.ProofPicturePath">
                                 <td>
@@ -113,7 +113,7 @@
                                 </td>
                                 <td>@i</td>
                                 <td>@user.RoleName</td>
-                                <td>@user.Username</td>
+                                <td>ToBeEditted</td>
                                 <td>@user.Email</td>
                                 <td>
                                     <div class="dropdown">

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminSideEcoFridge.Models;
@@ -9,14 +8,12 @@ public partial class User
 {
     public int UserId { get; set; }
 
-    public string Username { get; set; } = null!;
-
-    public string Password { get; set; } = null!;
+    public string Email { get; set; } = null!;
 
     [NotMapped]
     public string ConfirmPassword { get; set; }
 
-    public string Email { get; set; } = null!;
+    public string Password { get; set; } = null!;
 
     public string? FirstName { get; set; }
 
@@ -36,17 +33,23 @@ public partial class User
 
     public string? Barangay { get; set; }
 
-    public string? Street { get; set; }
-
     public string? ProfilePicturePath { get; set; }
 
     public string? ProofPicturePath { get; set; }
 
-    public string? EmailVerificationCode { get; set; }
+    public bool? AccountApproved { get; set; }
 
     public bool? EmailConfirmed { get; set; }
 
     public int? StorageSize { get; set; }
+
+    public int? FoodStoredCount { get; set; }
+
+    public virtual ICollection<Notifcation> NotifcationCreatedByNavigations { get; set; } = new List<Notifcation>();
+
+    public virtual ICollection<Notifcation> NotifcationUpdatedByNavigations { get; set; } = new List<Notifcation>();
+
+    public virtual ICollection<Notifcation> NotifcationUsers { get; set; } = new List<Notifcation>();
 
     public virtual ICollection<PaymentTransaction> PaymentTransactions { get; set; } = new List<PaymentTransaction>();
 

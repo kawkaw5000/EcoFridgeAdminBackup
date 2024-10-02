@@ -3,8 +3,24 @@ using System.Collections.Generic;
 
 namespace AdminSideEcoFridge.Models;
 
-public partial class VwUsersFoodItem
+public partial class VwFoodNotification
 {
+    public int NotificationId { get; set; }
+
+    public string? Title { get; set; }
+
+    public string? Content { get; set; }
+
+    public bool? HasBeenViewed { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
+
+    public DateTime? LastModified { get; set; }
+
+    public int? DaysToExpire { get; set; }
+
+    public int? TimePast { get; set; }
+
     public int FoodId { get; set; }
 
     public string? FoodName { get; set; }
