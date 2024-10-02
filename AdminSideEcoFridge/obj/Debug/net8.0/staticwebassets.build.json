@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8tD0HPSgbalIPKkQ0ZdYVfdk6lMGk7tREAFoSCnod70=",
+  "Hash": "MppiqSTS458k56TWBwKJmAOSAH5lDttcVhBtO3hbrBI=",
   "Source": "AdminSideEcoFridge",
   "BasePath": "_content/AdminSideEcoFridge",
   "Mode": "Default",
@@ -2107,6 +2107,25 @@
       "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\f7a6c7cd-e90d-473e-bdca-c0f9c4c90e1d.png"
     },
     {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_064a18d6-0b05-4dea-ba80-a00d9130a328.jpg",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/adminProfiles/profile_064a18d6-0b05-4dea-ba80-a00d9130a328.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\profile_064a18d6-0b05-4dea-ba80-a00d9130a328.jpg"
+    },
+    {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_25f3932a-d060-4b42-9502-9976c6186e76.png",
       "SourceId": "AdminSideEcoFridge",
       "SourceType": "Discovered",
@@ -2297,6 +2316,25 @@
       "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\profile_c5039b7d-80d2-4e5d-9cfb-54fce08126d6.png"
     },
     {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_ccc54f73-d57f-4550-831f-b64279346a98.png",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/adminProfiles/profile_ccc54f73-d57f-4550-831f-b64279346a98.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\profile_ccc54f73-d57f-4550-831f-b64279346a98.png"
+    },
+    {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_d5b8d2fc-1e0a-44df-b7cb-fd8b100ded72.png",
       "SourceId": "AdminSideEcoFridge",
       "SourceType": "Discovered",
@@ -2352,6 +2390,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\profile_f0ca583b-0c5e-4bef-a391-97cde3cd7208.jpg"
+    },
+    {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_f4793c71-7cd1-4345-a0a7-3145ef8699c6.jpg",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/adminProfiles/profile_f4793c71-7cd1-4345-a0a7-3145ef8699c6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\adminProfiles\\profile_f4793c71-7cd1-4345-a0a7-3145ef8699c6.jpg"
     },
     {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\default.png",
@@ -2753,6 +2810,25 @@
       "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_25fdf73e-b266-4655-9b57-614168b1ca65.png"
     },
     {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_2c7273da-20e3-4fef-95c6-6dabca608bd9.png",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/userProfiles/profile_2c7273da-20e3-4fef-95c6-6dabca608bd9.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_2c7273da-20e3-4fef-95c6-6dabca608bd9.png"
+    },
+    {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_2e07fd35-f9e9-4ff9-a4c7-c01cfa64aabe.jpg",
       "SourceId": "AdminSideEcoFridge",
       "SourceType": "Discovered",
@@ -2810,6 +2886,25 @@
       "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_54604a8b-43ce-47bd-8095-0c0d36ecadcb.jpg"
     },
     {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_5ab2e511-f256-433d-862a-7e03de0912dc.jpg",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/userProfiles/profile_5ab2e511-f256-433d-862a-7e03de0912dc.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_5ab2e511-f256-433d-862a-7e03de0912dc.jpg"
+    },
+    {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_71e5c916-4ecb-401e-b110-323b6a80afcc.jpg",
       "SourceId": "AdminSideEcoFridge",
       "SourceType": "Discovered",
@@ -2846,6 +2941,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_b97e0d65-90ba-4c22-8975-63cbcacd5635.png"
+    },
+    {
+      "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\userProfiles\\profile_da003864-3536-4429-b0de-5395fa2e1fc1.png",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/profiles/userProfiles/profile_da003864-3536-4429-b0de-5395fa2e1fc1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profiles\\userProfiles\\profile_da003864-3536-4429-b0de-5395fa2e1fc1.png"
     },
     {
       "Identity": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\profile_0b62a9c4-ae34-48c0-98ec-a616e586b52d.png",

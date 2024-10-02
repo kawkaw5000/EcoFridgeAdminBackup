@@ -13,23 +13,90 @@ namespace AdminSideEcoFridge.Controllers
 
     [Authorize(Policy = "AdminPolicy")]
     public class HomeController : BaseController
-    {      
-
-        public IActionResult Dashboard()
+    {
+        public IActionResult Dashboard(string role = "all")
         {
             List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll();
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
 
+            var roleCounts = userList
+                .GroupBy(u => u.RoleName)
+                .Select(group => new
+                {
+                    RoleName = group.Key,
+                    Count = group.Count()
+                })
+                .ToDictionary(g => g.RoleName, g => g.Count);
+
+            if (!string.IsNullOrEmpty(role) && role != "all")
+            {
+                userList = userList.Where(u => u.RoleName == role).ToList();
+            }
+
             var viewModel = new DashboardViewModel
             {
                 UserList = userList,
                 FoodList = foodList,
-                User = user
+                User = user,
+                TotalUsers = userList.Count(),
+                AdminCount = roleCounts.ContainsKey("admin") ? roleCounts["admin"] : 0,
+                DonorCount = roleCounts.ContainsKey("donor") ? roleCounts["donor"] : 0,
+                FoodBusinessCount = roleCounts.ContainsKey("food business") ? roleCounts["food business"] : 0,
+                OrganizationCount = roleCounts.ContainsKey("donee organization") ? roleCounts["donee organization"] : 0
             };
 
             return View(viewModel);
         }
+
+
+
+        //public IActionResult Dashboard()
+        //{
+        //    List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll();
+        //    List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
+        //    List<User> user = _userRepo.GetAll();
+
+        //    var roleCounts = userList
+        //        .GroupBy(u => u.RoleName)
+        //        .Select(group => new
+        //        {
+        //            RoleName = group.Key,
+        //            Count = group.Count()
+        //        })
+        //        .ToDictionary(g => g.RoleName, g => g.Count);
+
+        //    var viewModel = new DashboardViewModel
+        //    {
+        //        UserList = userList,
+        //        FoodList = foodList,
+        //        User = user,
+        //        TotalUsers = userList.Count(),
+        //        AdminCount = roleCounts.ContainsKey("admin") ? roleCounts["admin"] : 0,
+        //        DonorCount = roleCounts.ContainsKey("donor") ? roleCounts["donor"] : 0,
+        //        FoodBusinessCount = roleCounts.ContainsKey("food business") ? roleCounts["food business"] : 0,
+        //        OrganizationCount = roleCounts.ContainsKey("donee organization") ? roleCounts["donee organization"] : 0
+        //    };
+
+        //    return View(viewModel);
+        //}
+
+
+        //public IActionResult Dashboard()
+        //{
+        //    List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll();
+        //    List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
+        //    List<User> user = _userRepo.GetAll();
+
+        //    var viewModel = new DashboardViewModel
+        //    {
+        //        UserList = userList,
+        //        FoodList = foodList,
+        //        User = user
+        //    };
+
+        //    return View(viewModel);
+        //}
 
         public IActionResult GetFoodItemsByUserId(int userId)
         {

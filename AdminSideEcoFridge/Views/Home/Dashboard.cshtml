@@ -52,29 +52,19 @@
         </div>
         <div class="category-btn-list-flex">
             <div class="count-num">
-                <button class="count-btn">
-                    All (9)
-                </button>
+                <button class="count-btn" onclick="filterByRole('all')">All (@Model.TotalUsers)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn">
-                    Regular (4)
-                </button>
+                <button class="count-btn" onclick="filterByRole('donor')">Donor (@Model.DonorCount)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn">
-                    Food Business (1)
-                </button>
+                <button class="count-btn" onclick="filterByRole('food business')">Food Business (@Model.FoodBusinessCount)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn">
-                    Organization (3)
-                </button>
+                <button class="count-btn" onclick="filterByRole('donee organization')">Organization (@Model.OrganizationCount)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn">
-                    Admin (1)
-                </button>
+                <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
             </div>
             <div class="add">
                 <button class="add-btn" id="add-btn">
@@ -398,6 +388,10 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    function filterByRole(role) {
+       
+        window.location.href = '@Url.Action("Dashboard")' + '?role=' + role;
+    }
     document.getElementById('ok').addEventListener('click', function (event) {
         event.stopPropagation();
 
