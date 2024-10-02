@@ -189,6 +189,11 @@ namespace AdminSideEcoFridge.Controllers
                 return NotFound();
             }
 
+            if (u.AccountApproved != null)
+            {
+                existingUser.AccountApproved = u.AccountApproved;
+            }
+
             existingUser.FirstName = u.FirstName;
             existingUser.LastName = u.LastName;
             existingUser.Gender = u.Gender;
@@ -205,7 +210,7 @@ namespace AdminSideEcoFridge.Controllers
 
             if (!string.IsNullOrEmpty(u.ProofPicturePath))
             {
-                existingUser.ProfilePicturePath = u.ProfilePicturePath;
+                existingUser.ProofPicturePath = u.ProofPicturePath;
             }
 
             var result = _userRepo.Update(existingUser.UserId, existingUser);
@@ -219,6 +224,7 @@ namespace AdminSideEcoFridge.Controllers
             ModelState.AddModelError("", "Unable to update user. Please try again.");
             return View(u);
         }
+
 
         [HttpGet]
         public IActionResult EditFoodResto(int id)
@@ -249,6 +255,11 @@ namespace AdminSideEcoFridge.Controllers
                 return NotFound();
             }
 
+            if (u.AccountApproved != null)
+            {
+                existingUser.AccountApproved = u.AccountApproved;
+            }
+
             existingUser.FirstName = u.FirstName;
             existingUser.LastName = u.LastName;
             existingUser.Gender = u.Gender;
@@ -257,6 +268,7 @@ namespace AdminSideEcoFridge.Controllers
             existingUser.City = u.City;
             existingUser.Province = u.Province;
             existingUser.FoodBusinessName = u.FoodBusinessName;
+           
 
             if (!string.IsNullOrEmpty(u.ProfilePicturePath))
             {
@@ -267,6 +279,8 @@ namespace AdminSideEcoFridge.Controllers
             {
                 existingUser.ProfilePicturePath = u.ProfilePicturePath;
             }
+
+          
 
             var result = _userRepo.Update(existingUser.UserId, existingUser);
 
@@ -279,6 +293,35 @@ namespace AdminSideEcoFridge.Controllers
             ModelState.AddModelError("", "Unable to update user. Please try again.");
             return View(u);
         }
+
+        [HttpPost]
+        public JsonResult UpdateAccountApproval(string userId, bool isApproved)
+        {
+            if (int.TryParse(userId, out int parsedUserId))
+            {     
+                var user = _userRepo.Get(parsedUserId);
+
+                if (user != null)
+                {
+                    user.AccountApproved = isApproved;
+
+                    var result = _userRepo.Update(user.UserId, user);
+
+                    if (result == ErrorCode.Success)
+                    {
+                        return Json(new { success = true, message = isApproved ? "User approved" : "User declined" });
+                    }
+
+                    return Json(new { success = false, message = "Error updating user" });
+                }
+
+                return Json(new { success = false, message = "User not found" });
+            }
+
+            return Json(new { success = false, message = "Invalid user ID" });
+        }
+
+
         #endregion
 
         #region Account Creation -

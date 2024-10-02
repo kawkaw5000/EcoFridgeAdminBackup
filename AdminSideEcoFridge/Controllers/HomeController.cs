@@ -14,11 +14,16 @@ namespace AdminSideEcoFridge.Controllers
     [Authorize(Policy = "AdminPolicy")]
     public class HomeController : BaseController
     {
-        public IActionResult Dashboard(string role = "all")
+        public IActionResult Dashboard(string role = "all", string keyword = "")
         {
             List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll();
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
+
+            //if (!string.IsNullOrEmpty(keyword))
+            //{
+            //    user = _userRepository.SearchUsers(keyword); 
+            //}
 
             var roleCounts = userList
                 .GroupBy(u => u.RoleName)
@@ -34,6 +39,7 @@ namespace AdminSideEcoFridge.Controllers
                 userList = userList.Where(u => u.RoleName == role).ToList();
             }
 
+
             var viewModel = new DashboardViewModel
             {
                 UserList = userList,
@@ -48,6 +54,7 @@ namespace AdminSideEcoFridge.Controllers
 
             return View(viewModel);
         }
+
         public IActionResult GetFoodItemsByUserId(int userId)
         {
             List<VwUsersFoodItem> foodItems = _vwUsersFoodItemRepo.GetAll()

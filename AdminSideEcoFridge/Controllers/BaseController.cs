@@ -8,6 +8,7 @@ namespace AdminSideEcoFridge.Controllers
     public class BaseController : Controller
     {
         public EcoFridgeDbContext _db;
+        public UserRepository _userRepository;
         public UserRoleManager _roleManager;
         public BaseRepository<User> _userRepo;
         public BaseRepository<Role> _roleRepo;
@@ -27,8 +28,9 @@ namespace AdminSideEcoFridge.Controllers
         public BaseRepository<VwUsersRoleView> _vwUsersRoleViewRepo;
         public BaseRepository<VwUsersFoodItem> _vwUsersFoodItemRepo;
         public BaseController()
-        {    
+        {   
             _db = new EcoFridgeDbContext();
+            _userRepository = new UserRepository();
             _roleManager = new UserRoleManager();
             _userRepo = new BaseRepository<User>();
             _roleRepo = new BaseRepository<Role>();

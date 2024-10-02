@@ -48,6 +48,8 @@
             Action
         </button>
         <div class="dropdown">
+                <input type="hidden" id="editAccountApproved" name="AccountApproved" value="@Model.AccountApproved" />
+
             <button class="actions" type="button" id="approveBtn">Approve</button>
             <button class="actions" type="button" id="declineBtn">Decline</button>
         </div>
@@ -78,12 +80,74 @@
 </div>
 </form>
 
+<script>
+    document.addEventListener('click', function (event) {
 
+        if (event.target && event.target.id === 'approveBtn') {
+            updateAccountApproval(true);
+            document.getElementById('modal-approval').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('modal-approval').style.opacity = '1';
+            }, 10);
+        }
 
+        if (event.target && event.target.id === 'declineBtn') {
+            updateAccountApproval(false);
+            document.getElementById('modal-rejected').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('modal-rejected').style.opacity = '1';
+            }, 10);
+        }
 
+        if (event.target && event.target.id === 'closeApprovalModalBtn') {
+            document.getElementById('modal-approval').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('modal-approval').style.display = 'none';
+            }, 300);
+        }
 
+        if (event.target && event.target.id === 'closeDeclineModalBtn') {
+            document.getElementById('modal-rejected').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('modal-rejected').style.display = 'none';
+            }, 300);
+        }
+    });
 
+    function updateAccountApproval(isApproved) {
+        const userId = document.getElementById('editUserId').value;
 
+        document.getElementById('editAccountApproved').value = isApproved;
 
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UpdateAccountApproval", "Account")',
+            data: {
+                userId: userId,
+                isApproved: isApproved
+            },
+            success: function (response) {
+                if (response.success) {
+                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                    if (row) {
+                        const statusCell = row.querySelector('td:first-child');
+                        if (statusCell) {
 
+                            if (isApproved) {
+                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                            } else {
+                                statusCell.innerHTML = '<button class="reject-btn">Rejected</button>';
+                            }
+                        }
+                    }
+                } else {
+                    console.log('Error updating status:', response.message);
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
 

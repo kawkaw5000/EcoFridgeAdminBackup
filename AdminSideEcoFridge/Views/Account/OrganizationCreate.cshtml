@@ -75,7 +75,7 @@
                         <div class="food-business-cont">
                             <div class="margin-gap">
                                 <div style="position: relative;">
-                                    <input asp-for="DoneeOrganizationName" class="foodBusinessName" type="text" placeholder="Food Business Name" required>
+                                    <input asp-for="DoneeOrganizationName" class="foodBusinessName" type="text" placeholder="Organization Name" required>
                                     <div class="error-invalid-foodName">
                                         @Html.ValidationMessageFor(model => model.DoneeOrganizationName, "", new { @class = "text-danger" })
                                     </div>

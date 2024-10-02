@@ -140,7 +140,8 @@
                             i++;
                         }
                     </tbody>
-                </table>               
+                </table>  
+                
             </div>
                
             <!--BLANK CONTAINER-->
@@ -341,6 +342,29 @@
           
             <!-- Anti-forgery token -->
             @Html.AntiForgeryToken()
+            <div style="display: none; position: absolute; left: 0; bottom: -35px;">
+                <div style="position: relative;">
+                    <form method="get" action="@Url.Action("Dashboard", "Home")">
+                        <input type="text"
+                               name="keyword"
+                               style="width: 300px; border-radius: 15px; border-color: gray; border-width: 1px; padding-left: 74px; height: 25px;"
+                               placeholder="Enter a keyword..." />
+                        <div style="position: absolute; top: 0; left: 0px;">
+                            <button type="submit"
+                                    style="border-radius: 15px;
+                               border-color: gray;
+                               border-width: 1px;
+                               height: 30px;
+                               width: 70px;
+                               color: white;
+                               background-color: #307A59;">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             
          </div>
             <div id="org-modal" class="org-modal">
@@ -417,10 +441,13 @@
 
         let blankContainer = document.querySelector(".blank-profile-container ");
         let selectedProfile = document.querySelector(".selected-profile-container");
-
+        let selectedFoodUser = document.querySelector(".select-food-user-container");
+        let selectedOrguser = document.querySelector(".select-org-user-container");
+ 
         blankContainer.style.display = "block";
         selectedProfile.style.display = "none";
-       
+        selectedFoodUser.style.display = "none";
+        selectedOrguser.style.display = "none"    
     });
 </script>
 <script src="~/js/del-acc.js"></script>

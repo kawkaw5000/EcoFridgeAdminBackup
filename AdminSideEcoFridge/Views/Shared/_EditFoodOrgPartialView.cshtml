@@ -51,7 +51,7 @@
             </button>
             <div class="dropdown">
                 <button class="actions" type="button" id="food-approveBtn">Approve</button>
-                <button class="actions" type="button" id="food-declineBtn">Decline</button>
+                <button class="actions" type="button" id="food-declineBtn">Decline</button> 
             </div>
         </div>
         <div id="food-modal-approval" class="modal-approval-overlay">
@@ -81,7 +81,9 @@
 </form>
 <script>
     document.addEventListener('click', function (event) {
+
         if (event.target && event.target.id === 'food-approveBtn') {
+            updateAccountApproval(true); 
             document.getElementById('food-modal-approval').style.display = 'block';
             setTimeout(function () {
                 document.getElementById('food-modal-approval').style.opacity = '1';
@@ -89,6 +91,7 @@
         }
 
         if (event.target && event.target.id === 'food-declineBtn') {
+            updateAccountApproval(false); 
             document.getElementById('food-modal-rejected').style.display = 'block';
             setTimeout(function () {
                 document.getElementById('food-modal-rejected').style.opacity = '1';
@@ -109,12 +112,40 @@
             }, 300);
         }
     });
+
+    function updateAccountApproval(isApproved) {
+        const userId = document.getElementById('editUserId').value;
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UpdateAccountApproval", "Account")',
+            data: {
+                userId: userId,
+                isApproved: isApproved
+            },
+            success: function (response) {
+                if (response.success) {
+                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                    if (row) {
+                        const statusCell = row.querySelector('td:first-child'); 
+                        if (statusCell) {
+            
+                            if (isApproved) {
+                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                            } else {
+                                statusCell.innerHTML = '<button class="reject-btn">Rejected</button>';
+                            }
+                        }
+                    }
+                } else {
+                    console.log('Error updating status:', response.message);
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
 </script>
-
-
-
-
-
-
 
 
