@@ -20,10 +20,10 @@ namespace AdminSideEcoFridge.Controllers
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
 
-            //if (!string.IsNullOrEmpty(keyword))
-            //{
-            //    user = _userRepository.SearchUsers(keyword); 
-            //}
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                userList = _userSearchRepository.SearchUsers(keyword); 
+            }
 
             var roleCounts = userList
                 .GroupBy(u => u.RoleName)

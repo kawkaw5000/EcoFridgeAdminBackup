@@ -4,26 +4,24 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-public class UserRepository
+public class UserSearcRepository
 {
     private readonly EcoFridgeDbContext _context;
 
-    public UserRepository()
+    public UserSearcRepository()
     {
         _context = new EcoFridgeDbContext();
     }
 
-    // Other existing methods...
-
-    public List<User> SearchUsers(string keyword)
+    public List<VwUsersRoleView> SearchUsers(string keyword)
     {
         var parameter = new SqlParameter("@Keyword", keyword ?? (object)DBNull.Value);
 
-        var users = _context.Users
+        var users = _context.VwUsersRoleViews
             .FromSqlRaw("EXEC SearchUsers @Keyword", parameter)
             .ToList();
 
-        return users ?? new List<User>(); // Return an empty list if users is null
+        return users ?? new List<VwUsersRoleView>();
     }
 
 }

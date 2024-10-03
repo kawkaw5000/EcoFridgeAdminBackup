@@ -29,8 +29,7 @@
                         Welcome Back, @userName
                     </div>
                 }
-
-               
+             
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
                     <form method="get" asp-action="Dashboard">
@@ -87,10 +86,12 @@
                         </tr>
                     </thead>
                     <!--USER LIST------------->
-                    <tbody>     
-                        @{int i = 1;}
-                        @foreach (var user in Model.UserList)
-                        {                     
+                    <tbody>
+                        @if (Model.UserList != null && Model.UserList.Any())
+                        {
+                            int i = 1;
+                            @foreach (var user in Model.UserList)
+                            {                     
                             <tr data-user-id="@user.UserId"
                                 data-accounttype="@user.RoleName"
                                 data-firstname="@user.FirstName"
@@ -100,7 +101,6 @@
                                 data-image="@user.ProfilePicturePath"
                                 data-foodbussiness="@user.FoodBusinessName"
                                 data-orgname="@user.DoneeOrganizationName"
- 
                                 data-baranggay="@user.Barangay"
                                 data-city="@user.City"
                                 data-province="@user.Province"
@@ -138,7 +138,14 @@
                                 </td>
                             </tr>
                             i++;
+                            }
+                        } else
+                        {
+                            <tr>
+                                <td colspan="5">User was not Found.</td> <!-- Adjust colspan based on your table -->
+                            </tr>
                         }
+                        
                     </tbody>
                 </table>  
                 
@@ -298,8 +305,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="fridge-list">
-           
-                                      
+                       
                                     </tbody>
                                 </table>
                             </div>
@@ -342,23 +348,24 @@
           
             <!-- Anti-forgery token -->
             @Html.AntiForgeryToken()
-            <div style="display: none; position: absolute; left: 0; bottom: -35px;">
+            <div style="display: block; position: absolute; left: 0; bottom: 0;">
                 <div style="position: relative;">
                     <form method="get" action="@Url.Action("Dashboard", "Home")">
                         <input type="text"
                                name="keyword"
-                               style="width: 300px; border-radius: 15px; border-color: gray; border-width: 1px; padding-left: 74px; height: 25px;"
+                               style="width: 300px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-color: gray; border-width: 1px; padding-left: 74px; height: 25px;"
                                placeholder="Enter a keyword..." />
-                        <div style="position: absolute; top: 0; left: 0px;">
+                        <div style="position: absolute; top: -0.7px; left: 0px;">
                             <button type="submit"
-                                    style="border-radius: 15px;
-                               border-color: gray;
-                               border-width: 1px;
-                               height: 30px;
-                               width: 70px;
-                               color: white;
-                               background-color: #307A59;">
-                                Search
+                                    style="border-bottom-right-radius: 5px;
+                                           border-top-right-radius: 5px;
+                                           border-color: gray;
+                                           border-width: 1px;
+                                           height: 30px;
+                                           width: 70px;
+                                           color: white;
+                                           background-color: #307A59;">
+                            Search
                             </button>
                         </div>
                     </form>
