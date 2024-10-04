@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin - copy\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin - copy\\adminsideecofridge\\repository\\usersearcrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\repository\\usersearcrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin - copy\\adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin - copy\\adminsideecofridge\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!!-ecofridgeadminside\\ecofridgeadmin - copy\\adminsideecofridge\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,55 +18,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\BaseController.cs",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\BaseController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T13:11:58.261Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\HomeController.cs",
               "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA6wBoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T12:32:20.266Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserSearcRepository.cs",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T12:10:35.846Z"
+              "WhenOpened": "2024-10-03T16:41:11.024Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "ViewState": "AgIAAFIBAAAAAAAAAAAAAFsBAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-03T11:14:28.086Z",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-03T16:41:17.801Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]

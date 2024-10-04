@@ -6,18 +6,18 @@ using System.Linq;
 
 public class UserSearcRepository
 {
-    private readonly EcoFridgeDbContext _context;
+    private readonly EcoFridgeDbContext _db;
 
     public UserSearcRepository()
     {
-        _context = new EcoFridgeDbContext();
+        _db = new EcoFridgeDbContext();
     }
 
     public List<VwUsersRoleView> SearchUsers(string keyword)
     {
         var parameter = new SqlParameter("@Keyword", keyword ?? (object)DBNull.Value);
 
-        var users = _context.VwUsersRoleViews
+        var users = _db.VwUsersRoleViews
             .FromSqlRaw("EXEC SearchUsers @Keyword", parameter)
             .ToList();
 
