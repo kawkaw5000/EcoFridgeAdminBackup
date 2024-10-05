@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Github\\AdminEcoFridge\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Github\\AdminEcoFridge\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
         "outputPath": "C:\\Github\\AdminEcoFridge\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\obj\\",
+=======
+    "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
+  },
+  "projects": {
+    "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "projectName": "AdminSideEcoFridge",
+        "projectPath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "packagesPath": "C:\\Users\\LEX\\.nuget\\packages\\",
+        "outputPath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\obj\\",
+>>>>>>> 041d45f2fbed45c71efbecb872c236599547618f
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

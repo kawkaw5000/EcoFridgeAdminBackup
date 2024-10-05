@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "SHU9UQ8SIZQ=",
   "success": true,
   "projectFilePath": "C:\\Github\\AdminEcoFridge\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+=======
+  "dgSpecHash": "zTakfBc/eyg=",
+  "success": true,
+  "projectFilePath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+>>>>>>> 041d45f2fbed45c71efbecb872c236599547618f
   "expectedPackageFiles": [
     "C:\\Users\\acer\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -1,5 +1,5 @@
 ﻿@model AdminSideEcoFridge.Models.User
-
+@using System.Security.Claims
 @{
     Layout = "_Layout";
 }
@@ -13,9 +13,23 @@
     <div class="flex-container">
         <div class="welcome-container"> 
             <div class="admin-welcome">
-                <div class="admin-name">
-                    Welcome Back, Mori!
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
+                }
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
                     <form method="get" asp-controller="Home" asp-action="Dashboard">
@@ -33,9 +47,6 @@
     <!--DASHBOARD USERLIST NAVIGATION SCREENNSS-->
 
     <div class="user-container">
-        <div class="user-profiles">
-            User Profiles
-        </div>
         <div class="admin-create"><button>Admin</button></div>
         <form asp-action="AdminCreate" method="post" enctype="multipart/form-data">
             <div class="dashboard-home-container">        

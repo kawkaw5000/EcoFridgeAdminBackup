@@ -1,4 +1,5 @@
 ﻿@model AdminSideEcoFridge.Models.User
+@using System.Security.Claims
 @{
     Layout = "_Layout";
 }
@@ -12,9 +13,23 @@
     <div class="flex-container">
         <div class="welcome-container">
             <div class="admin-welcome">
-                <div class="admin-name">
-                    Welcome Back, Mori!
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
+                }
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
                     <form method="get" asp-controller="Home" asp-action="Dashboard">
@@ -31,68 +46,66 @@
     </div>
     <!--DASHBOARD USERLIST NAVIGATION SCREENNSS-->
     <div class="user-container">
-        <div class="user-profiles">
-            User Profiles
         </div>
         <div class="admin-create"><button>Food Business</button></div>
         <form asp-action="FoodBusinessCreate" method="post" enctype="multipart/form-data">
-        <div class="dashboard-home-container">
-            <div class="food-dashboard-home-container">
-                <div class="food-business-cont">
-                
-                    <div class="margin-gap">
-                        <div style="position: relative;">
-                            <input asp-for="Email" type="text" class="email" placeholder="Email" required>
-                            <div class="error-invalid-email">
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="margin-gap">
-                        <div class="pass-input">
-                            <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            <span class="toggle-password" onclick="togglePasswordVisibility()">
-                                <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
-                            </span>
-                        </div>
-                    </div>
-                    <div class="margin-gap">
-                        <div class="pass-input">
+            <div class="dashboard-home-container">
+                <div class="food-dashboard-home-container">
+                    <div class="food-business-cont">
+
+                        <div class="margin-gap">
                             <div style="position: relative;">
-                                <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
-                                <div class="error-invalid-password">
-                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                <input asp-for="Email" type="text" class="email" placeholder="Email" required>
+                                <div class="error-invalid-email">
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
-                                <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
-                            </span>
                         </div>
-                    </div>
-                </div>
-                <div class="food-business-cont">
-                    <div class="margin-gap">
-                        <div style="position: relative;">
-                                <input asp-for="FoodBusinessName" class="foodBusinessName" type="text" placeholder="Food Business Name" required>
-                            <div class="error-invalid-foodName">
-                                @Html.ValidationMessageFor(model => model.FoodBusinessName, "", new { @class = "text-danger" })
+                        <div class="margin-gap">
+                            <div class="pass-input">
+                                <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                <span class="toggle-password" onclick="togglePasswordVisibility()">
+                                    <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
+                                </span>
                             </div>
                         </div>
-                        
+                        <div class="margin-gap">
+                            <div class="pass-input">
+                                <div style="position: relative;">
+                                    <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
+                                    <div class="error-invalid-password">
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
+                                    <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="margin-gap">
-                        <input asp-for="Province" type="text" placeholder="Province" required>
+                    <div class="food-business-cont">
+                        <div class="margin-gap">
+                            <div style="position: relative;">
+                                <input asp-for="FoodBusinessName" class="foodBusinessName" type="text" placeholder="Food Business Name" required>
+                                <div class="error-invalid-foodName">
+                                    @Html.ValidationMessageFor(model => model.FoodBusinessName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="Province" type="text" placeholder="Province" required>
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="City" type="text" placeholder="City" required>
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="Barangay" type="text" placeholder="Barangay" required>
+                        </div>
                     </div>
-                    <div class="margin-gap">
-                        <input asp-for="City" type="text" placeholder="City" required>
-                    </div>
-                    <div class="margin-gap">
-                        <input asp-for="Barangay" type="text" placeholder="Barangay" required>
-                    </div>
-                </div>
-                <div class="food-business-cont">
-      
+                    <div class="food-business-cont">
+
                         <div class="margin-gap">
                             <div class="food-upload-container">
                                 <div style="position: relative;">
@@ -108,23 +121,23 @@
                             </div>
                         </div>
                         <div class="margin-gap">
-                        <div class="food-upload-container">
-                            <div style="position: relative;">
-                                <label for="myPermitFile" class="food-custom-file-upload">
-                                    Upload Business Permit
-                                </label>
-                                <input type="file" id="myPermitFile" name="ProofPicturePath" asp-for="ProofPicturePath" onchange="displayPermitFileName()">
-                                <span id="Permitfile-name">No file chosen</span>
-                                <div class="error-invalid-img-proof">
-                                    @Html.ValidationMessageFor(model => model.ProofPicturePath, "", new { @class = "text-danger" })
+                            <div class="food-upload-container">
+                                <div style="position: relative;">
+                                    <label for="myPermitFile" class="food-custom-file-upload">
+                                        Upload Business Permit
+                                    </label>
+                                    <input type="file" id="myPermitFile" name="ProofPicturePath" asp-for="ProofPicturePath" onchange="displayPermitFileName()">
+                                    <span id="Permitfile-name">No file chosen</span>
+                                    <div class="error-invalid-img-proof">
+                                        @Html.ValidationMessageFor(model => model.ProofPicturePath, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <input class="confirm" type="submit">
             </div>
-            <input class="confirm" type="submit">
-        </div>
         </form>
     </div>
 </div>

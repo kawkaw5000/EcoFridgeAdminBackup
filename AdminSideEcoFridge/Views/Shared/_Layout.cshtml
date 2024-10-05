@@ -25,8 +25,12 @@
         </div>
         <!--USER PROFILE ICON-->
         <div class="profile-container">
-            <img src="/images/header-icons/channel-1.jpeg" alt="" class="profile-img" id="profileImg">
+            @if (User.Identity.IsAuthenticated != null)
+            {
+                var profilePictureUrl = User.FindFirst("ProfilePicture")?.Value ?? "/images/default-profile.png";
 
+                <img src="@profilePictureUrl" alt="Profile Picture" class="profile-img" id="profileImg">
+            }
             <!-- Profile Dropdown -->
             
             <div class="profile-dropdown" id="profileDropdown">

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace AdminSideEcoFridge.Controllers
 {
 
-    [Authorize(Policy = "AdminPolicy")]
+    [Authorize(Policy = "AdminOrSuperAdminPolicy")]
     public class HomeController : BaseController
     {
         public IActionResult Dashboard(string role = "all", string keyword = "")
@@ -20,9 +20,14 @@ namespace AdminSideEcoFridge.Controllers
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
 
+            userList = userList.Where(u => u.RoleName != "super admin" && u.RoleName != "admin").ToList();
+
             if (!string.IsNullOrEmpty(keyword))
             {
-                userList = _userSearchRepository.SearchUsers(keyword); 
+
+                userList = _userSearchRepository.SearchUsers(keyword)
+            .Where(u => u.RoleName != "super admin" && u.RoleName != "admin")
+            .ToList();
             }
 
             var roleCounts = userList
