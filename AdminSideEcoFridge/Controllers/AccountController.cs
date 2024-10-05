@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminSideEcoFridge.Controllers
 {
-    [Authorize(Policy = "AdminPolicy")]
+    [Authorize(Policy = "AdminOrSuperAdminPolicy")]
     public class AccountController : BaseController
     {
         #region Login Authentication -
@@ -28,32 +28,7 @@ namespace AdminSideEcoFridge.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(CustomUserModelForLogIn user)
         {
-            var superAdminEmail = Environment.GetEnvironmentVariable("SUPERADMIN_EMAIL");
-            var superAdminPassword = Environment.GetEnvironmentVariable("SUPERADMIN_PASSWORD");
-
-
-            if (user.Email == superAdminEmail && user.Password == superAdminPassword)
-            {
-                List<Claim> claims1 = new List<Claim>()
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Email),
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, "SuperAdmin"),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, "SuperAdmin")
-                };
-
-                ClaimsIdentity identity1 = new ClaimsIdentity(claims1, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                AuthenticationProperties properties1 = new AuthenticationProperties()
-                {
-                    AllowRefresh = true,
-                    IsPersistent = true,
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity1), properties1);
-
-                return RedirectToAction("Dashboard", "Home");
-            }
-
+           
             var userObj = _db.Users.Where(model => (model.Email == user.Email || model.Email == user.Email)).FirstOrDefault();
 
             if (userObj == null || userObj.EmailConfirmed == false)
@@ -81,6 +56,7 @@ namespace AdminSideEcoFridge.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Email),
                 new Claim(ClaimTypes.GivenName, userObj.FirstName),
+                new Claim("ProfilePicture", userObj.ProfilePicturePath ?? "/images/default-profile.png"),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, Convert.ToString(userObj.UserId)),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, userRoleVw.RoleName)
             };
@@ -325,7 +301,7 @@ namespace AdminSideEcoFridge.Controllers
         #endregion
 
         #region Account Creation -
-        [Authorize(Policy = "AdminPolicy")]
+        [Authorize(Policy = "AdminOrSuperAdminPolicy")]
         [HttpGet]
         public IActionResult AdminCreate()
         {
@@ -437,7 +413,7 @@ namespace AdminSideEcoFridge.Controllers
             }
         }
 
-        [Authorize(Policy = "AdminPolicy")]
+        [Authorize(Policy = "AdminOrSuperAdminPolicy")]
         [HttpGet]
         public IActionResult RegularCreate()
         {
@@ -548,7 +524,7 @@ namespace AdminSideEcoFridge.Controllers
             }
         }
 
-        [Authorize(Policy = "AdminPolicy")]
+        [Authorize(Policy = "AdminOrSuperAdminPolicy")]
         [HttpGet]
         public IActionResult FoodBusinessCreate()
         {
@@ -702,43 +678,7 @@ namespace AdminSideEcoFridge.Controllers
             }
         }
 
-        //public IActionResult FoodBusinessCreate(User user)
-        //{
-        //    var existingEmail = _db.Users.Where(model => model.Email == user.Email).FirstOrDefault();
-
-        //    if (existingEmail == null)
-        //    {
-        //        user.FirstName = " ";
-        //        user.LastName = " ";
-        //        user.Gender = "M";
-        //        user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-
-        //        if (_userRepo.Create(user) == ErrorCode.Success)
-        //        {
-        //            var adminRole = _roleRepo.GetAll().FirstOrDefault(r => r.RoleName == "food business");
-        //            if (adminRole != null)
-        //            {
-        //                var userRole = new UserRole
-        //                {
-        //                    UserId = user.UserId,
-        //                    RoleId = adminRole.RoleId
-        //                };
-        //                _userRoleRepo.Create(userRole);
-        //            }
-        //            return RedirectToAction("Dashboard", "Home");
-        //        }
-        //        else
-        //        {
-        //            return View();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Email is already taken.");
-        //        return View(user);
-        //    }
-        //}
-        [Authorize(Policy = "AdminPolicy")]
+        [Authorize(Policy = "AdminOrSuperAdminPolicy")]
         [HttpGet]
         public IActionResult OrganizationCreate()
         {

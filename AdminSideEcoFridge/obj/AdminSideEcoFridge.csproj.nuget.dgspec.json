@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
+    "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
   },
   "projects": {
-    "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {
+    "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "projectUniqueName": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
         "projectName": "AdminSideEcoFridge",
-        "projectPath": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "projectPath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
         "packagesPath": "C:\\Users\\LEX\\.nuget\\packages\\",
-        "outputPath": "D:\\!!!!-EcoFridgeAdminSide\\EcoFridgeAdmin - Copy\\AdminSideEcoFridge\\obj\\",
+        "outputPath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

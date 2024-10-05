@@ -15,21 +15,24 @@
     <div class="dashboard">Dashboard</div>
     <div class="flex-container">
         <div class="welcome-container">
-            <div class="admin-welcome">
+            <div class="admin-welcome">d
                 @if (User.Identity.IsAuthenticated)
                 {
                     var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
-     
-                    if (User.IsInRole("SuperAdmin"))
-                    {
-                        userName = "SuperAdmin";
-                    }
 
-                    <div class="admin-name">
-                        Welcome Back, @userName
-                    </div>
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
                 }
-             
                 <div class="check-updates">Check out new updates</div>
                 <div class="user-profile-btn-container">
                     <form method="get" asp-action="Dashboard">
@@ -62,9 +65,15 @@
             <div class="count-num">
                 <button class="count-btn" onclick="filterByRole('donee organization')">Organization (@Model.OrganizationCount)</button>
             </div>
-            <div class="count-num">
-                <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("super admin"))
+                {
+                    <div class="count-num">
+                        <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
+                    </div>
+                }             
+            }     
             <div class="add">
                 <button class="add-btn" id="add-btn">
                     <img src="/images/header-icons/plus-icon.svg" alt="" class="cross-icon">
@@ -348,7 +357,7 @@
           
             <!-- Anti-forgery token -->
             @Html.AntiForgeryToken()
-            <div style="display: block; position: absolute; left: 0; bottom: 0;">
+            <div style="display: block; position: absolute; left: 0; top: -68px;">
                 <div style="position: relative;">
                     <form method="get" action="@Url.Action("Dashboard", "Home")">
                         <input type="text"
@@ -384,16 +393,38 @@
      </div>
 </div>
 
+<div id="OrgDocuModal" class="orgImg-modal">
+    <span class="org-close">&times;</span>
+    <img class="orgDoc-modal-content" id="docOrg" data-scale="1" data-rotation="0">
+    <img class="rotate-btn" src="~/images/Create-icons/proicons--arrow-sync.svg" id="rotateButton" alt="Alternate Text" />
+    <img class="zooms-in-btn" src="~/images/Create-icons/proicons--zoom-in.svg" id="zoomInButton" alt="Alternate Text" />
+    <img class="zooms-out-btn" src="~/images/Create-icons/proicons--zoom-out.svg" id="zoomOutButton" />
+</div>
+
+<div id="FoodDocuModal" class="orgImg-modal">
+    <span class="food-close">&times;</span>
+    <img class="orgDoc-modal-content" id="docFood" data-scale="1" data-rotation="0">
+    <img class="rotate-btn" src="~/images/Create-icons/proicons--arrow-sync.svg" id="FoodrotateButton" alt="Alternate Text" />
+    <img class="zooms-in-btn" src="~/images/Create-icons/proicons--zoom-in.svg" id="FoodzoomInButton" alt="Alternate Text" />
+    <img class="zooms-out-btn" src="~/images/Create-icons/proicons--zoom-out.svg" id="FoodzoomOutButton" />
+</div>
+
 <!---MODALlllllldsdsdssd-->
 <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="create-acc">Create a account</div>
         <div class="account-content">
-            <form method="get" asp-controller="Account" asp-action="AdminCreate">
-                <button class="admin-btn">
-                    Admin
-                </button>
-            </form>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("super admin"))
+                {
+                    <form method="get" asp-controller="Account" asp-action="AdminCreate">
+                        <button class="admin-btn">
+                            Admin
+                        </button>
+                    </form>
+                }           
+            }
             <form method="get" asp-controller="Account" asp-action="RegularCreate">
                 <button class="admin-btn">
                     Regular
@@ -457,6 +488,8 @@
         selectedOrguser.style.display = "none"    
     });
 </script>
+<script src="~/js/orgproofzoom.js"></script>
+<script src="~/js/foodproofzoom.js"></script>
 <script src="~/js/del-acc.js"></script>
 <script src="~/js/modal-approval.js"></script>
 <script src="~/js/selectuser.js"></script>

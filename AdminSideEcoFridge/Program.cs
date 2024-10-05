@@ -26,20 +26,15 @@ builder.Services.AddScoped<IAuthorizationHandler, RolesInDBAuthorizationHandler>
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("SuperAdminPolicy", policy =>
+        policy.RequireRole("super admin"));
+
     options.AddPolicy("AdminPolicy", policy =>
         policy.RequireRole("admin"));
 
-    options.AddPolicy("IndividualUserPolicy", policy =>
-        policy.RequireRole("individual_user"));
-
-    options.AddPolicy("FoodBusinessPolicy", policy =>
-        policy.RequireRole("food_business"));
-
-    options.AddPolicy("DoneeOrgPolicy", policy =>
-        policy.RequireRole("donee_organization"));
-
-    options.AddPolicy("UsersPolicy", policy =>
-        policy.RequireRole("donee_organization", "individual_user", "food_business"));
+    options.AddPolicy("AdminOrSuperAdminPolicy", policy =>
+        policy.RequireAssertion(context =>
+            context.User.IsInRole("admin") || context.User.IsInRole("super admin")));
 });
 
 var app = builder.Build();
